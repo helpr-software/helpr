@@ -27,6 +27,23 @@ module.exports = {
         "accent-hover": withOpacity("--accent-color-hover"),
         "accent-faded": "var(--accent-color-faded)",
         muted: "var(--font-muted)",
+        placeholder: "var(--font-placeholder)",
+      },
+      textColor: {
+        primary: "var(--font-primary)",
+        muted: "var(--font-muted)",
+        placeholder: "var(--font-placeholder)",
+        inverted: "var(--font-inverted)",
+        accent: withOpacity("--accent-color"),
+        "accent-hover": withOpacity("--accent-color-hover"),
+      },
+      borderColor: {
+        primary: "var(--border-primary)",
+        "primary-hover": "var(--border-primary-hover)",
+        muted: "var(--border-muted)",
+        accent: withOpacity("--accent-color"),
+        "accent-faded": "var(--accent-color-faded)",
+        transparent: "transparent",
       },
       gradientColorStops: {
         "accent-primary": "var(--accent-primary)",

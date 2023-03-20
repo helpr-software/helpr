@@ -14,13 +14,13 @@ function goBack() {
 </script>
 
 <template>
-  <main class="grid min-h-full place-items-center bg-black py-24 px-6 sm:py-32 lg:px-8">
-    <div class="text-center">
+  <main class="grid min-h-full place-items-center bg-primary py-24 px-6 sm:py-32 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto">
       <p class="text-base font-semibold text-accent">{{ error.statusCode }}</p>
-      <h1 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">
+      <h1 class="mt-4 font-bold text-white text-xl sm:text-2xl md:text-3xl">Uh oh! Something went wrong.</h1>
+      <p class="mt-6 text-base text-muted text-xl">
         {{ error.message }}
-      </h1>
-      <p class="mt-6 text-base leading-7 text-gray-600">Sorry, we couldn’t find the page you’re looking for.</p>
+      </p>
       <div class="mt-10 flex items-center justify-center gap-x-6">
         <NuxtLink
           @click="handleError"

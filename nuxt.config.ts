@@ -14,10 +14,6 @@ export default defineNuxtConfig({
   },
   css: ["~/assets/style/main.scss"],
 
-  build: {
-    transpile: ["@heroicons/vue"],
-  },
-
   imports: {
     dirs: ["store"],
   },
@@ -82,9 +78,9 @@ export default defineNuxtConfig({
 
   image: {
     alias: {
-      supabase: "https://uynsrkwqyplqhfrmdaqw.supabase.co/storage/v1/object/public",
+      supabase:
+        "https://uynsrkwqyplqhfrmdaqw.supabase.co/storage/v1/object/public",
     },
     domains: ["uynsrkwqyplqhfrmdaqw.supabase.co"],
-    dir: "assets/media",
   },
-})
+});

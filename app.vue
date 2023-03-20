@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import EnvChecker from "~/components/layout/EnvChecker.vue";
+
 const { locale } = useI18n();
 
 useHead({
@@ -31,6 +33,11 @@ onMounted(() => {
 
 <template>
   <Html :data-theme="theme">
-    <NuxtWelcome />
+    <Body class="bg-primary m-0 p-0 text-primary">
+      <EnvChecker />
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </Body>
   </Html>
 </template>
