@@ -17,16 +17,20 @@ useHead({
   ],
 });
 
+const theme = computed(() => useGlobalStore().getTheme);
+
 onMounted(() => {
   const userLocale = useLocalStorage("helpr_locale", "en");
   const userTheme = useLocalStorage("helpr_theme", "cosmos");
 
+  useGlobalStore().setTheme(userTheme.value);
+  useGlobalStore().setLocale(userLocale.value);
   locale.value = userLocale.value;
 });
 </script>
 
 <template>
-  <div>
+  <Html :data-theme="theme">
     <NuxtWelcome />
-  </div>
+  </Html>
 </template>
