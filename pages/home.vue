@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ArrowLongRightIcon } from "@heroicons/vue/24/outline";
-import Footer from "@/components/layout/Footer.vue";
 import ProviderRow from "~/components/ProviderRow.vue";
 import Promo from "~/components/Promo.vue";
 const { t } = useI18n();
@@ -101,7 +100,7 @@ const features = computed(() => [
       </div>
 
       <div class="relative w-3/4 mx-auto my-16">
-        <hr class="border-secondary" />
+        <hr class="border-white/10" />
         <Promo class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
       </div>
 
@@ -125,9 +124,8 @@ const features = computed(() => [
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-16">
             <div class="glass-card" v-for="feature in features" :key="feature.name">
               <nuxt-img
-                preload
                 class="w-full h-48 object-cover"
-                :src="'/landing/' + feature.image"
+                :src="'/assets/landing/' + feature.image"
                 :alt="feature.name"
                 sizes="sm:100vw md:50vw lg:400px"
               />
@@ -180,7 +178,6 @@ const features = computed(() => [
           </div>
         </div>
       </div>
-      <Footer />
     </main>
   </div>
 </template>

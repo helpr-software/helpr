@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   pending: {
     type: Boolean,
     required: false,
@@ -26,8 +26,7 @@ const props = defineProps({
 <template>
   <div>
     <button class="btn-primary px-5 py-2" :disabled="disabled || pending" :class="{ 'w-full': fullWidth }">
-      <Loader v-if="pending" />
-      <span v-else>{{ text }}</span>
+      <span>{{ text }}</span>
     </button>
   </div>
 </template>

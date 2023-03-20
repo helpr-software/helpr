@@ -10,15 +10,6 @@ const userStore = useUserStore();
 const user = computed(() => {
   return false;
 });
-
-async function logout() {
-  await useFetch("/api/auth/logout", {
-    method: "POST",
-  });
-  useSuccessToast(t("profile.logout") + " " + user.value?.username ?? "");
-  userStore.logout();
-  useRouter().push("/login");
-}
 </script>
 
 <template>
@@ -108,7 +99,6 @@ async function logout() {
                 <MenuItem v-slot="{ active }">
                   <button
                     class="w-full block text-left px-4 py-2 text-sm text-primary"
-                    @click="logout()"
                     :class="active ? 'bg-accent-faded text-accent' : 'text-red-600'"
                   >
                     {{ $t("navigation.logout") }}
