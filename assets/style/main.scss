@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "animation";
+@import "themes/dark";
+@import "themes/light";
+
+html,body, #__nuxt, #__layout{
+  @apply bg-primary;
+  height:100%!important;
+  width: 100%!important;
+}
+
+@layer components {
+  .input {
+    @apply bg-secondary;
+    @apply text-primary placeholder:text-placeholder;
+    @apply border-sm rounded-md border-primary hover:border-primary-hover;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent;
+    @apply px-4 py-2;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-bl from-accent-primary to-accent-secondary;
+    @apply text-inverted;
+    @apply rounded-md;
+    @apply px-4 py-2 flex justify-center;
+    @apply cursor-pointer;
+
+    &:disabled {
+      @apply bg-accent;
+      @apply cursor-not-allowed;
+    }
+  }
+
+  .btn-secondary {
+    @apply bg-primary;
+    @apply text-muted;
+    @apply border-sm rounded-md border-primary hover:border-primary-hover;
+    @apply px-3 py-1 flex justify-center;
+    @apply cursor-pointer;
+  }
+
+  .gradient {
+    @apply bg-gradient-to-bl from-accent-primary to-accent-secondary;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-bl from-accent-primary to-accent-secondary;
+  }
+
+  .white-gradient-border {
+    @apply bg-gradient-to-bl from-white to-white;
+    @apply bg-clip-text text-transparent;
+  }
+
+  .glass-card {
+    @apply flex flex-col items-center backdrop-blur-md bg-primary-opacity/30 rounded-md p-8 shadow-lg;
+    @apply h-80 relative;
+  }
+
+  .card-content {
+    @apply absolute p-6 flex flex-col inset-0 justify-end;
+  }
+
+  .border-gradient {
+    @apply bg-gradient-to-r from-accent-primary to-accent-secondary;
+    @apply bg-clip-text text-transparent;
+    @apply border border-accent;
+  }
+}
+
+.backdrop-shadow {
+  position: absolute;
+  filter: blur(150px);
+  width: 30%;
+  height: 30%;
+}
+
+.backdrop-shadow-sm {
+  position: absolute;
+  filter: blur(150px);
+  width: 40%;
+  height: 20%;
+  z-index: -1;
+}
