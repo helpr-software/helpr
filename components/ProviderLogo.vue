@@ -30,12 +30,12 @@ const theme = computed(() => {
     <div v-if="!source">
       <nuxt-img
         class="block lg:hidden"
-        :src="'/provider/' + theme + '/' + provider + '-logo.svg'"
+        :src="'/assets/provider/' + theme + '/' + provider + '-logo.svg'"
         :class="['w-' + size, 'h-' + size]"
       />
       <nuxt-img
         class="hidden w-auto lg:block"
-        :src="'/provider/' + theme + '/' + provider + '-logo.svg'"
+        :src="'/assets/provider/' + theme + '/' + provider + '-logo.svg'"
         :class="['w-' + size, 'h-' + size]"
       />
     </div>
