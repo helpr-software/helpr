@@ -97,8 +97,8 @@ const integrations = [
         class="backdrop-shadow bg-accent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"
       ></div>
       <div class="flex justify-center items-center gap-4">
-        <ProviderCard :size="2" provider="calendar" />
-        <ProviderCard :size="4" provider="github" />
+        <ProviderCard :size="4" provider="notion" />
+        <ProviderCard :size="6" provider="github" />
         <ProviderCard :size="8" provider="linear" />
         <NuxtLink
           class="flex relative justify-center items-center p-4 gradient rounded-full shadow-2xl group hover:scale-110 transition-all cursor-pointer duration-300 ease-in-out"
@@ -110,8 +110,8 @@ const integrations = [
           <PlusSmallIcon class="h-20 w-20 text-primary z-10" />
         </NuxtLink>
         <ProviderCard :size="8" provider="openai" />
-        <ProviderCard :size="4" provider="slack" />
-        <ProviderCard :size="2" provider="calendar" />
+        <ProviderCard :size="6" provider="slack" />
+        <ProviderCard :size="4" provider="calendar" />
       </div>
       <div class="drop-shadow-2xl">
         <h1 class="drop-shadow-2xl text-4xl font-bold tracking-tight text-primary sm:text-5xl text-center mt-4">

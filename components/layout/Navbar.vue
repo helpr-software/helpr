@@ -2,7 +2,6 @@
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import { Bars3Icon } from "@heroicons/vue/24/outline";
 import LanguageSelector from "~/components/settings/LanguageSelector.vue";
-const { t } = useI18n();
 
 const navigation = getNavigation("home");
 const userStore = useUserStore();
@@ -113,8 +112,8 @@ const user = computed(() => {
       <div class="flex flex-1 justify-end items-center gap-x-4">
         <LanguageSelector />
         <div v-if="!user" class="hidden lg:flex lg:gap-x-4">
-          <NuxtLink to="/login" class="btn-primary py-1">{{ $t("navigation.login") }}</NuxtLink>
-          <NuxtLink to="/signup" class="btn-secondary py-1">{{ $t("navigation.signup") }}</NuxtLink>
+          <NuxtLink to="/auth/login" class="btn-primary py-1">{{ $t("navigation.login") }}</NuxtLink>
+          <NuxtLink to="/auth/signup" class="btn-secondary py-1">{{ $t("navigation.signup") }}</NuxtLink>
         </div>
         <NuxtLink to="/app/my-flows" class="btn-secondary py-1 hidden md:block" v-else>{{
           $t("navigation.open_app")
