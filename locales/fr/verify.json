@@ -1,0 +1,9 @@
+{
+  "verify_your_account": "Vérifiez votre compte",
+  "verify": "Vérifier",
+  "verification_code_sent": "Un code de vérification a été envoyé à votre adresse email, veuillez le saisir ci-dessous",
+  "verification_code_sent_again": "Un nouveau code de vérification a été envoyé à votre adresse email",
+  "resend_email": "Renvoyer l'email",
+  "didnt_receive_email": "Vous n'avez pas reçu d'email ?",
+  "verification_successful": "Votre compte a été vérifié avec succès"
+}

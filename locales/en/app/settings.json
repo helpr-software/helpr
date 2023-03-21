@@ -1,0 +1,7 @@
+{
+  "title": "Settings",
+  "description": "Here you can change your application settings.",
+  "language": "Language",
+  "theme": "Theme",
+  "theme_description": "Choose the theme you want to use."
+}

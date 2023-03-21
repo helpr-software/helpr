@@ -1,0 +1,12 @@
+{
+  "title": "Connect your providers",
+  "description": "Connect your providers to start using them in your flows.",
+  "connect": "Connect",
+  "connected": "Connected providers",
+  "connected_providers": "Connected providers",
+  "no_connected_providers": "No connected providers",
+  "connect_provider": "Connect provider",
+  "disconnect": "Disconnect",
+  "already_connected": "You are already connected to",
+  "save": "Save"
+}

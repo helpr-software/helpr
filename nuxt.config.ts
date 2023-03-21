@@ -1,5 +1,4 @@
-import en from "./locales/en.json";
-import fr from "./locales/fr.json";
+import messages from "./locales/messages";
 
 export default defineNuxtConfig({
   app: {
@@ -69,10 +68,7 @@ export default defineNuxtConfig({
       locale: "en",
       fallbackLocale: "en",
       availableLocales: ["en", "fr"],
-      messages: {
-        en,
-        fr,
-      },
+      messages: messages,
     },
   },
 
