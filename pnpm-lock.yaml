@@ -16,6 +16,7 @@ specifiers:
   '@tailwindcss/forms': ^0.5.3
   '@vueuse/core': ^9.11.1
   '@vueuse/nuxt': ^9.11.1
+  consola: ^3.0.1
   eslint: ^8.32.0
   eslint-config-prettier: ^8.6.0
   eslint-plugin-prettier: ^4.2.1
@@ -48,6 +49,7 @@ devDependencies:
   '@tailwindcss/forms': 0.5.3
   '@vueuse/core': 9.13.0
   '@vueuse/nuxt': 9.13.0_nuxt@3.4.1
+  consola: 3.1.0
   eslint: 8.38.0
   eslint-config-prettier: 8.8.0_eslint@8.38.0
   eslint-plugin-prettier: 4.2.1_mrzcadguhkbme6yx3ehduvsjxu
