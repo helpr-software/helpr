@@ -24,16 +24,8 @@ const theme = computed(() => {
 <template>
   <div>
     <NuxtLink to="/" class="flex flex-shrink-0 items-center" id="logo">
-      <nuxt-img
-        class="block w-auto lg:hidden"
-        :class="size ? 'h-' + size : 'h-6'"
-        :src="'assets/helpr-logo-' + theme + '.svg'"
-      />
-      <nuxt-img
-        class="hidden w-auto lg:block"
-        :class="size ? 'h-' + size : 'h-6'"
-        :src="'assets/helpr-logo-' + theme + '.svg'"
-      />
+      <nuxt-img class="block w-auto lg:hidden" :class="size ? 'h-' + size : 'h-6'" :src="'assets/helpr-logo-' + theme + '.svg'" />
+      <nuxt-img class="hidden w-auto lg:block" :class="size ? 'h-' + size : 'h-6'" :src="'assets/helpr-logo-' + theme + '.svg'" />
       <span class="text-md font-bold text-primary ml-2" v-if="isText">
         {{ applicationName }}
       </span>

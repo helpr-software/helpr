@@ -25,16 +25,11 @@ defineProps({
 
 <template>
   <div class="flowCard glass-card relative">
-    <div
-      class="absolute -top-0 right-0 px-6 bg-yellow-400 rounded-bl-md rounded-tr-md flex items-center gap-2"
-      v-if="premium"
-    >
+    <div class="absolute -top-0 right-0 px-6 bg-yellow-400 rounded-bl-md rounded-tr-md flex items-center gap-2" v-if="premium">
       <span class="text-xs font-medium text-white"> premium </span>
     </div>
     <div class="flex flex-col gap-2 justify-between h-full">
-      <div
-        class="h-full flex items-center justify-center divide-accent divide-x-md p-8 bg-gradient-to-r from-primary to-secondary rounded-md"
-      >
+      <div class="h-full flex items-center justify-center divide-accent divide-x-md p-8 bg-gradient-to-r from-primary to-secondary rounded-md">
         <ProviderLogo v-for="provider in providerActions" :key="provider" :provider="provider" :size="8" class="px-6" />
       </div>
       <div class="flex items-center gap-4 mt-2">

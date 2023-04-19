@@ -33,15 +33,7 @@ const loading = ref(false);
       <form class="space-y-4">
         <div>
           <div class="mt-1">
-            <input
-              id="login"
-              name="login"
-              autocomplete="email"
-              required
-              :placeholder="$t('login.login')"
-              class="input w-full"
-              v-model="login"
-            />
+            <input id="login" name="login" autocomplete="email" required :placeholder="$t('login.login')" class="input w-full" v-model="login" />
           </div>
         </div>
         <div>
@@ -60,16 +52,12 @@ const loading = ref(false);
         </div>
         <div class="flex items-center justify-end">
           <div class="text-sm">
-            <NuxtLink to="/password/forgot" class="font-medium text-accent hover:text-accent-hover"
-              >{{ $t("login.forgot_password") }}
-            </NuxtLink>
+            <NuxtLink to="/password/forgot" class="font-medium text-accent hover:text-accent-hover">{{ $t("login.forgot_password") }} </NuxtLink>
           </div>
         </div>
         <ButtonPrimary :full-width="true" :pending="loading" :text="$t('login.signin')" type="submit" />
       </form>
-      <NuxtLink :to="{ name: 'Signup' }" class="btn-secondary w-full mt-6">{{
-        $t("login.dont_have_an_account")
-      }}</NuxtLink>
+      <NuxtLink :to="{ name: 'Signup' }" class="btn-secondary w-full mt-6">{{ $t("login.dont_have_an_account") }}</NuxtLink>
     </div>
     <div class="sm:mx-auto sm:w-full sm:max-w-md flex flex-col justify-center items-center">
       <LanguageSelector :is-text="true" class="mt-6" />

@@ -42,15 +42,7 @@ const signup = async () => {
     </div>
     <div class="sm:mx-auto sm:w-full sm:max-w-md mt-12">
       <form class="space-y-4" @submit.prevent="signup">
-        <input
-          id="username"
-          name="username"
-          autocomplete="username"
-          required
-          :placeholder="$t('signup.username')"
-          class="input w-full"
-          v-model="username"
-        />
+        <input id="username" name="username" autocomplete="username" required :placeholder="$t('signup.username')" class="input w-full" v-model="username" />
         <div class="flex flex-row gap-2">
           <input
             id="firstname"
@@ -61,26 +53,9 @@ const signup = async () => {
             class="input w-full"
             v-model="firstname"
           />
-          <input
-            id="lastname"
-            name="lastname"
-            autocomplete="lastname"
-            required
-            :placeholder="$t('signup.lastname')"
-            class="input w-full"
-            v-model="lastname"
-          />
+          <input id="lastname" name="lastname" autocomplete="lastname" required :placeholder="$t('signup.lastname')" class="input w-full" v-model="lastname" />
         </div>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          autocomplete="email"
-          required
-          :placeholder="$t('signup.email')"
-          class="input w-full"
-          v-model="email"
-        />
+        <input id="email" name="email" type="email" autocomplete="email" required :placeholder="$t('signup.email')" class="input w-full" v-model="email" />
         <input
           id="password"
           name="password"

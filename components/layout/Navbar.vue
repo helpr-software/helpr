@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
+<script lang="ts" setup>
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { Bars3Icon } from "@heroicons/vue/24/outline";
 import LanguageSelector from "~/components/settings/LanguageSelector.vue";
 
@@ -18,11 +18,13 @@ const user = computed(() => {
         <div class="hidden lg:flex lg:gap-x-8">
           <NuxtLink
             v-for="item in navigation"
-            :key="item.name"
-            :to="item.to"
             :id="item.name.toLowerCase()"
+            :key="item.name"
+            :class="[
+              item.name === $route.name ? 'text-gradient' : 'text-primary',
+            ]"
+            :to="item.to"
             class="text-xs font-semibold leading-6 hover:text-gradient transition-colors duration-300 ease-in-out"
-            :class="[item.name === $route.name ? 'text-gradient' : 'text-primary']"
           >
             {{ $t("navigation." + item.name.toLowerCase()) }}
           </NuxtLink>
@@ -47,19 +49,27 @@ const user = computed(() => {
             <MenuItems
               class="absolute left-0 w-56 origin-top-left bg-secondary rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none divide-y divide-gray-600"
             >
-              <div class="px-4 py-3" v-if="user">
+              <div v-if="user" class="px-4 py-3">
                 <p class="text-sm">Signed in as</p>
-                <p class="truncate text-sm font-medium text-accent">{{ user.email }}</p>
+                <p class="truncate text-sm font-medium text-accent">
+                  {{ user.email }}
+                </p>
               </div>
               <div>
-                <MenuItem v-slot="{ active }" v-for="item in navigation" :key="item.name">
+                <MenuItem
+                  v-for="item in navigation"
+                  :key="item.name"
+                  v-slot="{ active }"
+                >
                   <NuxtLink
-                    :to="item.to"
                     :id="item.name.toLowerCase()"
                     :class="[
-                      active || item.name === $route.name ? 'bg-accent-faded text-accent' : 'text-primary',
+                      active || item.name === $route.name
+                        ? 'bg-accent-faded text-accent'
+                        : 'text-primary',
                       'block w-full px-4 py-2 text-left text-sm',
                     ]"
+                    :to="item.to"
                   >
                     {{ $t("navigation." + item.name.toLowerCase()) }}
                   </NuxtLink>
@@ -68,18 +78,22 @@ const user = computed(() => {
               <div v-if="!user">
                 <MenuItem v-slot="{ active }">
                   <NuxtLink
-                    to="/login"
+                    :class="
+                      active ? 'bg-accent-faded text-accent' : 'text-primary'
+                    "
                     class="w-full block text-left px-4 py-2 text-sm text-primary"
-                    :class="active ? 'bg-accent-faded text-accent' : 'text-primary'"
+                    to="/auth/login"
                   >
                     {{ $t("navigation.login") }}
                   </NuxtLink>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
                   <NuxtLink
-                    to="/signup"
+                    :class="
+                      active ? 'bg-accent-faded text-accent' : 'text-primary'
+                    "
                     class="w-full block text-left px-4 py-2 text-sm text-primary"
-                    :class="active ? 'bg-accent-faded text-accent' : 'text-primary'"
+                    to="/auth/signup"
                   >
                     {{ $t("navigation.signup") }}
                   </NuxtLink>
@@ -88,17 +102,21 @@ const user = computed(() => {
               <div v-else>
                 <MenuItem v-slot="{ active }">
                   <NuxtLink
-                    to="/app/my-flows"
+                    :class="
+                      active ? 'bg-accent-faded text-accent' : 'text-primary'
+                    "
                     class="w-full block text-left px-4 py-2 text-sm text-primary"
-                    :class="active ? 'bg-accent-faded text-accent' : 'text-primary'"
+                    to="/app/my-flows"
                   >
                     {{ $t("navigation.open_app") }}
                   </NuxtLink>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
                   <button
+                    :class="
+                      active ? 'bg-accent-faded text-accent' : 'text-red-600'
+                    "
                     class="w-full block text-left px-4 py-2 text-sm text-primary"
-                    :class="active ? 'bg-accent-faded text-accent' : 'text-red-600'"
                   >
                     {{ $t("navigation.logout") }}
                   </button>
@@ -112,12 +130,19 @@ const user = computed(() => {
       <div class="flex flex-1 justify-end items-center gap-x-4">
         <LanguageSelector />
         <div v-if="!user" class="hidden lg:flex lg:gap-x-4">
-          <NuxtLink to="/auth/login" class="btn-primary py-1">{{ $t("navigation.login") }}</NuxtLink>
-          <NuxtLink to="/auth/signup" class="btn-secondary py-1">{{ $t("navigation.signup") }}</NuxtLink>
+          <NuxtLink class="btn-primary py-1" to="/auth/login"
+            >{{ $t("navigation.login") }}
+          </NuxtLink>
+          <NuxtLink class="btn-secondary py-1" to="/auth/signup"
+            >{{ $t("navigation.signup") }}
+          </NuxtLink>
         </div>
-        <NuxtLink to="/app/my-flows" class="btn-secondary py-1 hidden md:block" v-else>{{
-          $t("navigation.open_app")
-        }}</NuxtLink>
+        <NuxtLink
+          v-else
+          class="btn-secondary py-1 hidden md:block"
+          to="/app/my-flows"
+          >{{ $t("navigation.open_app") }}
+        </NuxtLink>
       </div>
     </nav>
   </header>

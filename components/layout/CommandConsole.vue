@@ -2,16 +2,7 @@
 import { computed, ref } from "vue";
 import { MagnifyingGlassIcon, LanguageIcon } from "@heroicons/vue/20/solid";
 import { DocumentIcon, PlusCircleIcon, SparklesIcon, InformationCircleIcon } from "@heroicons/vue/24/outline";
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxOptions,
-  ComboboxOption,
-  Dialog,
-  DialogPanel,
-  TransitionChild,
-  TransitionRoot,
-} from "@headlessui/vue";
+import { Combobox, ComboboxInput, ComboboxOptions, ComboboxOption, Dialog, DialogPanel, TransitionChild, TransitionRoot } from "@headlessui/vue";
 const { locale } = useI18n();
 const globalStore = useGlobalStore();
 
@@ -67,9 +58,7 @@ const consoleActions = [
 const open = ref(false);
 const query = ref("");
 const filteredActions = computed(() =>
-  query.value === ""
-    ? []
-    : consoleActions.filter((action) => action.name.toLowerCase().includes(query.value.toLowerCase())),
+  query.value === "" ? [] : consoleActions.filter((action) => action.name.toLowerCase().includes(query.value.toLowerCase())),
 );
 
 function onSelect(item) {
@@ -152,15 +141,10 @@ onMounted(() => {
           leave-from="opacity-100 scale-100"
           leave-to="opacity-0 scale-95"
         >
-          <DialogPanel
-            class="mx-auto max-w-2xl transform divide-y divide-gray-800 overflow-hidden rounded-xl bg-secondary shadow-2xl transition-all"
-          >
+          <DialogPanel class="mx-auto max-w-2xl transform divide-y divide-gray-800 overflow-hidden rounded-xl bg-secondary shadow-2xl transition-all">
             <Combobox @update:modelValue="onSelect">
               <div class="relative">
-                <MagnifyingGlassIcon
-                  class="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-muted"
-                  aria-hidden="true"
-                />
+                <MagnifyingGlassIcon class="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-muted" aria-hidden="true" />
                 <ComboboxInput
                   class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-primary placeholder-gray-400 focus:ring-0 sm:text-sm focus:outline-none"
                   placeholder="Search..."
@@ -168,11 +152,7 @@ onMounted(() => {
                 />
               </div>
 
-              <ComboboxOptions
-                v-if="query === '' || filteredActions.length > 0"
-                static
-                class="max-h-80 scroll-py-2 divide-y divide-gray-800 overflow-y-auto"
-              >
+              <ComboboxOptions v-if="query === '' || filteredActions.length > 0" static class="max-h-80 scroll-py-2 divide-y divide-gray-800 overflow-y-auto">
                 <li class="p-2">
                   <h2 v-if="query === ''" class="mt-4 mb-2 px-3 text-xs font-semibold text-muted">Searches</h2>
                   <ul class="text-sm text-primary">
@@ -183,17 +163,8 @@ onMounted(() => {
                       as="template"
                       v-slot="{ active }"
                     >
-                      <li
-                        :class="[
-                          'flex cursor-default text-muted select-none items-center rounded-md px-3 py-2',
-                          active && 'bg-accent text-primary',
-                        ]"
-                      >
-                        <component
-                          :is="action.icon"
-                          :class="['h-6 w-6 flex-none', active ? 'text-white' : 'text-gray-400']"
-                          aria-hidden="true"
-                        />
+                      <li :class="['flex cursor-default text-muted select-none items-center rounded-md px-3 py-2', active && 'bg-accent text-primary']">
+                        <component :is="action.icon" :class="['h-6 w-6 flex-none', active ? 'text-white' : 'text-gray-400']" aria-hidden="true" />
                         <span class="ml-3 flex-auto truncate" :class="[active ? 'text-primary' : 'text-muted']">
                           {{ action.name }}
                         </span>
@@ -205,31 +176,11 @@ onMounted(() => {
                 <li v-if="query === ''" class="p-2">
                   <h2 class="sr-only">Quick actions</h2>
                   <ul class="text-sm text-muted">
-                    <ComboboxOption
-                      v-for="action in consoleActions"
-                      :key="action.shortcut"
-                      :value="action"
-                      as="template"
-                      v-slot="{ active }"
-                    >
-                      <li
-                        :class="[
-                          'flex cursor-default select-none items-center rounded-md px-3 py-2',
-                          active && 'bg-accent text-primary',
-                        ]"
-                      >
-                        <component
-                          :is="action.icon"
-                          :class="['h-6 w-6 flex-none', active ? 'text-white' : 'text-gray-400']"
-                          aria-hidden="true"
-                        />
+                    <ComboboxOption v-for="action in consoleActions" :key="action.shortcut" :value="action" as="template" v-slot="{ active }">
+                      <li :class="['flex cursor-default select-none items-center rounded-md px-3 py-2', active && 'bg-accent text-primary']">
+                        <component :is="action.icon" :class="['h-6 w-6 flex-none', active ? 'text-white' : 'text-gray-400']" aria-hidden="true" />
                         <span class="ml-3 flex-auto truncate">{{ action.name }}</span>
-                        <span
-                          :class="[
-                            'ml-3 flex-none text-xs font-semibold',
-                            active ? 'text-indigo-100' : 'text-gray-400',
-                          ]"
-                        >
+                        <span :class="['ml-3 flex-none text-xs font-semibold', active ? 'text-indigo-100' : 'text-gray-400']">
                           <kbd class="font-sans">{{ action.shortcut }}</kbd>
                         </span>
                       </li>
@@ -242,17 +193,11 @@ onMounted(() => {
                 <h2 class="sr-only">AI assistant</h2>
                 <ul class="text-sm text-muted">
                   <li class="flex items-center rounded-md px-3 py-6">
-                    <span class="ml-3 flex-auto truncate" v-if="!ai_response">
-                      Press enter to get a response from AI assistant
-                    </span>
+                    <span class="ml-3 flex-auto truncate" v-if="!ai_response"> Press enter to get a response from AI assistant </span>
                     <span class="text-xs text-muted" v-else>
                       {{ ai_response }}
                     </span>
-                    <button
-                      v-if="ai_response"
-                      class="ml-3 flex-none text-xs font-semibold text-primary"
-                      @click="ai_response = ''"
-                    >
+                    <button v-if="ai_response" class="ml-3 flex-none text-xs font-semibold text-primary" @click="ai_response = ''">
                       <kbd class="font-sans">Clear</kbd>
                     </button>
                   </li>

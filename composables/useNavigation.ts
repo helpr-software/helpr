@@ -1,12 +1,4 @@
-import {
-  CogIcon,
-  HomeIcon,
-  UserGroupIcon,
-  UserCircleIcon,
-  PencilIcon,
-  BookmarkIcon,
-  GlobeAltIcon,
-} from "@heroicons/vue/24/outline";
+import { CogIcon, HomeIcon, UserGroupIcon, UserCircleIcon, PencilIcon, BookmarkIcon, GlobeAltIcon } from "@heroicons/vue/24/outline";
 
 type Where = "home" | "app" | "user" | "admin";
 
@@ -24,7 +16,6 @@ export function getNavigation(where: Where): Navigation[] {
         { name: "Home", to: "/", icon: HomeIcon },
         { name: "Pricing", to: "/pricing", icon: HomeIcon },
         { name: "Integrations", to: "/integrations", icon: HomeIcon },
-        { name: "Changelog", to: "/changelog", icon: HomeIcon },
         { name: "Team", to: "/team", icon: HomeIcon },
         { name: "Contact", to: "/contact", icon: HomeIcon },
       ];

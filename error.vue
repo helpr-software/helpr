@@ -27,10 +27,7 @@ function goBack() {
           class="rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover cursor-pointer"
           >Go back home
         </NuxtLink>
-        <button
-          @click="goBack"
-          class="rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover cursor-pointer"
-        >
+        <button @click="goBack" class="rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover cursor-pointer">
           Go back
         </button>
       </div>

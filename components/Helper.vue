@@ -42,18 +42,12 @@ const open = ref(false);
                   <div class="flex flex-col justify-center text-center">
                     <nuxt-img class="hidden w-auto lg:block h-8" :src="'/supabase/logo/dark/helpr-logo.svg'" />
                     <p class="text-sm text-muted mt-4">
-                      <span class="font-bold">Helpr</span> est un assistant virtuel qui vous aide à trouver des réponses
-                      à vos questions.
+                      <span class="font-bold">Helpr</span> est un assistant virtuel qui vous aide à trouver des réponses à vos questions.
                     </p>
                   </div>
                   <div class="mt-3 text-center sm:mt-5">
                     <client-only>
-                      <iframe
-                        src="https://www.chatbase.co/chatbot-iframe/www-helprapp-fr-rcplwsiso"
-                        frameborder="0"
-                        class="w-full"
-                        height="400"
-                      ></iframe>
+                      <iframe src="https://www.chatbase.co/chatbot-iframe/www-helprapp-fr-rcplwsiso" frameborder="0" class="w-full" height="400"></iframe>
                     </client-only>
                   </div>
                 </div>

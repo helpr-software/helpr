@@ -28,16 +28,8 @@ const theme = computed(() => {
 <template>
   <div class="flex flex-shrink-0 items-center">
     <div v-if="!source">
-      <nuxt-img
-        class="block lg:hidden"
-        :src="'/assets/provider/' + theme + '/' + provider + '-logo.svg'"
-        :class="['w-' + size, 'h-' + size]"
-      />
-      <nuxt-img
-        class="hidden w-auto lg:block"
-        :src="'/assets/provider/' + theme + '/' + provider + '-logo.svg'"
-        :class="['w-' + size, 'h-' + size]"
-      />
+      <nuxt-img class="block lg:hidden" :src="'/assets/provider/' + theme + '/' + provider + '-logo.svg'" :class="['w-' + size, 'h-' + size]" />
+      <nuxt-img class="hidden w-auto lg:block" :src="'/assets/provider/' + theme + '/' + provider + '-logo.svg'" :class="['w-' + size, 'h-' + size]" />
     </div>
     <div v-else>
       <nuxt-img class="block w-auto lg:hidden" :src="source" :alt="provider + ' logo'" :class="['h-' + size]" />

@@ -49,10 +49,7 @@ const open = ref(false);
                     loop
                     muted
                   >
-                    <source
-                      src="https://uynsrkwqyplqhfrmdaqw.supabase.co/storage/v1/object/public/assets/helpr-promo"
-                      type="video/mp4"
-                    />
+                    <source src="https://uynsrkwqyplqhfrmdaqw.supabase.co/storage/v1/object/public/assets/helpr-promo" type="video/mp4" />
                   </video>
                 </div>
               </DialogPanel>

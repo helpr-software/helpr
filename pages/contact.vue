@@ -57,9 +57,7 @@ async function submitForm() {
     <div class="relative mx-auto max-w-7xl lg:grid lg:grid-cols-5">
       <div class="py-16 px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
         <div class="mx-auto max-w-lg">
-          <h2 class="text-2xl font-bold tracking-tight sm:text-3xl text-gradient">
-            {{ t("contact.title") }}<span class="text-primary ml-2">.</span>
-          </h2>
+          <h2 class="text-2xl font-bold tracking-tight sm:text-3xl text-gradient">{{ t("contact.title") }}<span class="text-primary ml-2">.</span></h2>
           <p class="mt-3 text-lg leading-6 text-muted">
             {{ t("contact.description") }}
           </p>
@@ -121,15 +119,7 @@ async function submitForm() {
               <label for="phone" class="sr-only">
                 {{ t("contact.phone") }}
               </label>
-              <input
-                v-model="phone"
-                type="text"
-                name="phone"
-                id="phone"
-                autocomplete="tel"
-                class="input w-full"
-                :placeholder="t('contact.phone')"
-              />
+              <input v-model="phone" type="text" name="phone" id="phone" autocomplete="tel" class="input w-full" :placeholder="t('contact.phone')" />
             </div>
             <div>
               <label for="text" class="sr-only">
@@ -148,15 +138,7 @@ async function submitForm() {
               <label for="message" class="sr-only">
                 {{ t("contact.message") }}
               </label>
-              <textarea
-                required
-                v-model="message"
-                id="message"
-                name="message"
-                rows="4"
-                class="input w-full"
-                :placeholder="t('contact.message')"
-              />
+              <textarea required v-model="message" id="message" name="message" rows="4" class="input w-full" :placeholder="t('contact.message')" />
             </div>
             <ButtonPrimary type="submit" :pending="loading">
               {{ t("contact.submit") }}

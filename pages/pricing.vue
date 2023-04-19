@@ -15,14 +15,7 @@ const premiumPlan: Plan = {
   price: 7.99,
   priceId: Plans.PREMIUM.priceId,
   description: "Upgrade to Premium to unlock all the features of Helpr !!!",
-  features: [
-    "Unlimited flows",
-    "Unlimited actions",
-    "Unlimited triggers",
-    "Unlimited integrations",
-    "Unlimited team members",
-    "Priority support",
-  ],
+  features: ["Unlimited flows", "Unlimited actions", "Unlimited triggers", "Unlimited integrations", "Unlimited team members", "Priority support"],
 };
 
 const user = useUserStore().getUser;
@@ -49,9 +42,7 @@ async function redirectToLogin() {
       <div
         class="relative backdrop-blur-md bg-primary-opacity/30 mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-secondary sm:mt-20 lg:mx-0 lg:flex lg:max-w-none"
       >
-        <div
-          class="backdrop-shadow-sm bg-accent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"
-        ></div>
+        <div class="backdrop-shadow-sm bg-accent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"></div>
         <div class="p-8 sm:p-10 lg:flex-auto">
           <h3 class="text-2xl font-bold tracking-tight text-primary">Premium Membership</h3>
           <p class="mt-6 text-base leading-7 text-muted">
@@ -70,14 +61,8 @@ async function redirectToLogin() {
             </li>
           </ul>
         </div>
-        <form
-          action="/api/stripe/subscribe"
-          method="post"
-          class="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0"
-        >
-          <div
-            class="rounded-2xl backdrop-blur-md bg-primary-opacity/60 shadow-2xl py-10 text-center lg:flex lg:flex-col lg:justify-center lg:py-16"
-          >
+        <form action="/api/stripe/subscribe" method="post" class="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
+          <div class="rounded-2xl backdrop-blur-md bg-primary-opacity/60 shadow-2xl py-10 text-center lg:flex lg:flex-col lg:justify-center lg:py-16">
             <div class="mx-auto max-w-xs px-8">
               <p class="text-base font-semibold text-muted">
                 {{ $t("pricing.boost") }}

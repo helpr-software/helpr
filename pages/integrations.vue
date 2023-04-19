@@ -76,8 +76,7 @@ const integrations = [
   },
   {
     name: "Sheets",
-    description:
-      "Google Sheets is a spreadsheet program included as part of the free, web-based Google Docs Editors & Spreadsheets.",
+    description: "Google Sheets is a spreadsheet program included as part of the free, web-based Google Docs Editors & Spreadsheets.",
   },
   {
     name: "Stripe",
@@ -93,9 +92,7 @@ const integrations = [
 <template>
   <div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative py-16">
-      <div
-        class="backdrop-shadow bg-accent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"
-      ></div>
+      <div class="backdrop-shadow bg-accent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"></div>
       <div class="flex justify-center items-center gap-4">
         <ProviderCard :size="4" provider="notion" />
         <ProviderCard :size="6" provider="github" />
@@ -103,9 +100,7 @@ const integrations = [
         <NuxtLink
           class="flex relative justify-center items-center p-4 gradient rounded-full shadow-2xl group hover:scale-110 transition-all cursor-pointer duration-300 ease-in-out"
         >
-          <div
-            class="group-hover:animate-ping absolute inline-flex h-full w-full rounded-full gradient opacity-75 delay-300 duration-700"
-          ></div>
+          <div class="group-hover:animate-ping absolute inline-flex h-full w-full rounded-full gradient opacity-75 delay-300 duration-700"></div>
           <div class="absolute inline-flex rounded-full h-2/3 w-2/3 gradient animate-spin delay-300 duration-700"></div>
           <PlusSmallIcon class="h-20 w-20 text-primary z-10" />
         </NuxtLink>
@@ -129,12 +124,8 @@ const integrations = [
     </div>
     <hr class="my-8 md:my-24 border-secondary w-3/4 mx-auto" />
     <div class="absolute mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-      <div
-        class="backdrop-shadow bg-accent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"
-      ></div>
-      <h3 class="text-3xl font-bold tracking-tight text-gradient sm:text-4xl mt-4">
-        {{ t("integrations.featured") }}<span class="text-primary ml-2">.</span>
-      </h3>
+      <div class="backdrop-shadow bg-accent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"></div>
+      <h3 class="text-3xl font-bold tracking-tight text-gradient sm:text-4xl mt-4">{{ t("integrations.featured") }}<span class="text-primary ml-2">.</span></h3>
       <p class="mt-3 text-xl text-muted">
         {{ t("integrations.featured_description") }}
       </p>
@@ -153,12 +144,8 @@ const integrations = [
     </div>
     <hr class="my-8 md:my-24 border-secondary w-3/4 mx-auto" />
     <div class="absolute mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-      <div
-        class="backdrop-shadow bg-accent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"
-      ></div>
-      <h3 class="text-3xl font-bold tracking-tight text-gradient sm:text-4xl mt-4">
-        {{ t("integrations.all") }}<span class="text-primary ml-2">.</span>
-      </h3>
+      <div class="backdrop-shadow bg-accent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"></div>
+      <h3 class="text-3xl font-bold tracking-tight text-gradient sm:text-4xl mt-4">{{ t("integrations.all") }}<span class="text-primary ml-2">.</span></h3>
       <p class="mt-3 text-xl text-muted">
         {{ t("integrations.all_description") }}
       </p>

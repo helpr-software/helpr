@@ -17,17 +17,7 @@ export default defineNuxtConfig({
     dirs: ["store"],
   },
 
-  modules: [
-    "@nuxt/image-edge",
-    "@nuxtjs/i18n",
-    "@nuxtjs/tailwindcss",
-    "@vueuse/nuxt",
-    "@nuxt/content",
-    "@nuxtjs/supabase",
-    "@pinia/nuxt",
-    "nuxt-headlessui",
-    "nuxt-mailer",
-  ],
+  modules: ["@nuxt/image-edge", "@nuxtjs/i18n", "@nuxtjs/tailwindcss", "@vueuse/nuxt", "@nuxtjs/supabase", "@pinia/nuxt", "nuxt-headlessui", "nuxt-mailer"],
 
   runtimeConfig: {
     mailerUser: process.env.MAILER_USER,
@@ -74,8 +64,7 @@ export default defineNuxtConfig({
 
   image: {
     alias: {
-      supabase:
-        "https://uynsrkwqyplqhfrmdaqw.supabase.co/storage/v1/object/public",
+      supabase: "https://uynsrkwqyplqhfrmdaqw.supabase.co/storage/v1/object/public",
     },
     domains: ["uynsrkwqyplqhfrmdaqw.supabase.co"],
   },

@@ -63,11 +63,7 @@ const theme = computed(() => {
         <nuxt-img class="w-auto h-6" :src="'/assets/maison-hochard-logo-' + theme + '.svg'" />
         <span class="text-muted text-sm"
           >© 2023
-          <NuxtLink
-            target="_blank"
-            to="https://www.maisonhochard.com"
-            class="text-muted hover:text-primary transition-colors duration-300 ease-in-out"
-          >
+          <NuxtLink target="_blank" to="https://www.maisonhochard.com" class="text-muted hover:text-primary transition-colors duration-300 ease-in-out">
             Maison Hochard </NuxtLink
           >. All rights reserved.</span
         >

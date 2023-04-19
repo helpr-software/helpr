@@ -40,10 +40,7 @@ const currentLocale = computed(() => {
 
 <template>
   <Menu as="div" class="relative inline-block text-left">
-    <MenuButton
-      as="button"
-      class="inline-flex gap-2 justify-center w-full px-4 py-2 text-sm font-medium text-primary border border-transparent rounded-md"
-    >
+    <MenuButton as="button" class="inline-flex gap-2 justify-center w-full px-4 py-2 text-sm font-medium text-primary border border-transparent rounded-md">
       <span>{{ currentLocale.flag }}</span>
       <span v-if="isText">{{ currentLocale.name }}</span>
     </MenuButton>
@@ -55,10 +52,7 @@ const currentLocale = computed(() => {
       leave-from-class="transform opacity-100 scale-100"
       leave-to-class="transform opacity-0 scale-95"
     >
-      <MenuItems
-        as="div"
-        class="absolute mt-2 origin-center bg-primary border border-muted divide-y divide-muted rounded-md shadow-lg outline-none"
-      >
+      <MenuItems as="div" class="absolute mt-2 origin-center bg-primary border border-muted divide-y divide-muted rounded-md shadow-lg outline-none">
         <MenuItem
           v-for="locale in availableLocales"
           :key="locale.name"

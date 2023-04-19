@@ -66,9 +66,7 @@ const features = computed(() => [
     <main>
       <!-- Hero section -->
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative py-16">
-        <div
-          class="backdrop-shadow bg-accent scale-150 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"
-        ></div>
+        <div class="backdrop-shadow bg-accent scale-150 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"></div>
         <div class="flex flex-col items-center justify-center z-10 gap-4 hidden lg:flex">
           <ProviderRow :nb="6" />
           <ProviderRow :nb="10" />
@@ -91,9 +89,7 @@ const features = computed(() => [
           <NuxtLink class="drop-shadow-xl mt-5 flex justify-center gap-6" to="/auth/signup">
             <button type="button" class="hover-shadow-gradient btn-primary py-1 px-10 mt-4 flex items-center group">
               {{ t("home.start") }}
-              <ArrowLongRightIcon
-                class="w-5 h-5 ml-2 text-inverted group-hover:translate-x-1 transition-transform duration-300"
-              />
+              <ArrowLongRightIcon class="w-5 h-5 ml-2 text-inverted group-hover:translate-x-1 transition-transform duration-300" />
             </button>
           </NuxtLink>
         </div>
@@ -106,9 +102,7 @@ const features = computed(() => [
 
       <!-- Details section -->
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-        <div
-          class="backdrop-shadow bg-accent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"
-        ></div>
+        <div class="backdrop-shadow bg-accent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"></div>
         <div class="flex flex-col items-center justify-center">
           <div class="flex flex-col items-center">
             <h2 class="text-2xl font-bold tracking-tight text-primary sm:text-3xl text-center">
@@ -123,12 +117,7 @@ const features = computed(() => [
 
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-16">
             <div class="glass-card" v-for="feature in features" :key="feature.name">
-              <nuxt-img
-                class="w-full h-48 object-cover"
-                :src="'/assets/landing/' + feature.image"
-                :alt="feature.name"
-                sizes="sm:100vw md:50vw lg:400px"
-              />
+              <nuxt-img class="w-full h-48 object-cover" :src="'/assets/landing/' + feature.image" :alt="feature.name" sizes="sm:100vw md:50vw lg:400px" />
               <div class="card-content">
                 <h3 class="text-xl font-bold tracking-tight text-primary sm:text-2xl text-center mt-4">
                   <span>{{ feature.name }}</span>
@@ -146,12 +135,8 @@ const features = computed(() => [
 
       <!-- CTA section -->
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-        <div
-          class="backdrop-shadow bg-accent scale-150 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"
-        ></div>
-        <div
-          class="backdrop-blur-md bg-primary-opacity/30 rounded-lg py-12 px-6 sm:py-16 sm:px-12 lg:py-20 lg:px-16 flex flex-col items-center"
-        >
+        <div class="backdrop-shadow bg-accent scale-150 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"></div>
+        <div class="backdrop-blur-md bg-primary-opacity/30 rounded-lg py-12 px-6 sm:py-16 sm:px-12 lg:py-20 lg:px-16 flex flex-col items-center">
           <div class="flex items-center justify-center">
             <Logo :size="12" />
           </div>
