@@ -1,0 +1,35 @@
+{
+  "start": "Get started",
+  "workflow": "workflow",
+  "details": {
+    "first": "Unlike any",
+    "tool": "tool",
+    "second": "you've used before",
+    "description": "Designed to be fast to the last pixel, helpr combines UI excellence and fast performance."
+  },
+  "cta": {
+    "title": "Say hello to your\nbrand new",
+    "description": "Join our communities of people who dont waste time",
+    "download": "Download the app"
+  },
+  "features": {
+    "fast": "Fast",
+    "fastDescription": "Helpr is fast, really fast, you can create your first flow in less than 2 minutes",
+    "dynamic": "Dynamic",
+    "dynamicDescription": "Create powerful flows with our dynamic actions, use variables, ai generated text, and more",
+    "integrations": "Integrations",
+    "integrationsDescription": "Integrated with many providers, you can also create your own integrations",
+    "secure": "Secure",
+    "secureDescription": "Secure, your data is encrypted and we don't store your data",
+    "crossPlatform": "Cross-platform",
+    "crossPlatformDescription": "Available on all platforms, you can use Helpr on your computer, tablet or phone",
+    "customizable": "Customizable",
+    "customizableDescription": "Fully customizable, change your theme, language, or even create your own integrations",
+    "console": "Console",
+    "consoleDescription": "Meet our console, A powerful tool to enhance your experience, type in ⌘ K for the magic to happen",
+    "keyboard_first": "Keyboard first",
+    "keyboardDescription": "Designed to be used with your keyboard and provide many shortcuts, try to catch them all ;)",
+    "privacy": "Privacy",
+    "privacyDescription": "Privacy focused, we don't store your data and we don't track you, and more your API connections are fully encrypted"
+  }
+}

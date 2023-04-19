@@ -1,0 +1,12 @@
+{
+  "title": "Ajouter des intégrations",
+  "description": "Ajoutez des intégrations à votre compte pour pouvoir les utiliser dans vos flows",
+  "connect": "Connecter",
+  "connected": "Connecté",
+  "connected_providers": "Intégrations connectées",
+  "no_connected_providers": "Aucune intégration connectée",
+  "connect_provider": "Connecter une intégration",
+  "disconnect": "Déconnecter",
+  "already_connected": "Vous êtes déjà connecté à",
+  "save": "Enregistrer"
+}

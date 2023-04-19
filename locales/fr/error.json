@@ -1,0 +1,10 @@
+{
+  "404": "Cette page n'existe pas",
+  "404_message": "La page que vous recherchez n'existe pas ou a été déplacée.",
+  "500": "Erreur interne du serveur",
+  "user_not_found": "Utilisateur introuvable",
+  "invalid_password": "Mot de passe incorrect",
+  "user_already_exists": "Cet utilisateur existe déjà",
+  "unknown_error": "Une erreur inconnue s'est produite",
+  "invalid_code": "Code de vérification incorrect"
+}

@@ -4,7 +4,6 @@
 
 @import "animation";
 @import "themes/dark";
-@import "themes/light";
 
 html,body, #__nuxt, #__layout{
   @apply bg-primary;
@@ -23,7 +22,7 @@ html,body, #__nuxt, #__layout{
 
   .btn-primary {
     @apply bg-gradient-to-bl from-accent-primary to-accent-secondary;
-    @apply text-inverted;
+    @apply text-primary;
     @apply rounded-md;
     @apply px-4 py-2 flex justify-center;
     @apply cursor-pointer;

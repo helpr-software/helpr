@@ -1,0 +1,9 @@
+{
+  "verify_your_account": "Verify your account",
+  "verify": "Verify",
+  "verification_code_sent": "A verification code has been sent to your email address",
+  "verification_code_sent_again": "A new verification code has been sent to your email address",
+  "resend_email": "Resend email",
+  "didnt_receive_email": "Didn't receive the email ?",
+  "verification_successful": "Your account has been verified"
+}

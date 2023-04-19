@@ -1,5 +1,4 @@
-import en from "./locales/en.json";
-import fr from "./locales/fr.json";
+import messages from "./locales/messages";
 
 export default defineNuxtConfig({
   app: {
@@ -13,10 +12,6 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/style/main.scss"],
-
-  build: {
-    transpile: ["@heroicons/vue"],
-  },
 
   imports: {
     dirs: ["store"],
@@ -73,18 +68,15 @@ export default defineNuxtConfig({
       locale: "en",
       fallbackLocale: "en",
       availableLocales: ["en", "fr"],
-      messages: {
-        en,
-        fr,
-      },
+      messages: messages,
     },
   },
 
   image: {
     alias: {
-      supabase: "https://uynsrkwqyplqhfrmdaqw.supabase.co/storage/v1/object/public",
+      supabase:
+        "https://uynsrkwqyplqhfrmdaqw.supabase.co/storage/v1/object/public",
     },
     domains: ["uynsrkwqyplqhfrmdaqw.supabase.co"],
-    dir: "assets/media",
   },
-})
+});

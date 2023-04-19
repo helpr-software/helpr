@@ -1,0 +1,12 @@
+{
+  "signup_to_your_account": "Sign up to your account",
+  "username": "Username",
+  "firstname": "Firstname",
+  "lastname": "Lastname",
+  "email": "Email",
+  "password": "Password",
+  "confirm_password": "Confirm Password",
+  "signup": "Sign up",
+  "already_have_an_account": "Already have an account? Sign in",
+  "signup_success": "You have successfully registered"
+}

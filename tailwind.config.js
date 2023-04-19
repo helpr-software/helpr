@@ -27,6 +27,7 @@ module.exports = {
         "accent-hover": withOpacity("--accent-color-hover"),
         "accent-faded": "var(--accent-color-faded)",
         muted: "var(--font-muted)",
+        placeholder: "var(--font-placeholder)",
       },
       textColor: {
         primary: "var(--font-primary)",
@@ -36,24 +37,6 @@ module.exports = {
         accent: withOpacity("--accent-color"),
         "accent-hover": withOpacity("--accent-color-hover"),
       },
-      backgroundColor: {
-        primary: "var(--bg-primary)",
-        "primary-opacity": withOpacity("--bg-primary-opacity"),
-        secondary: "var(--bg-secondary)",
-        accent: withOpacity("--accent-color"),
-        "accent-hover": withOpacity("--accent-color-hover"),
-        "accent-faded": "var(--accent-color-faded)",
-        transparent: "transparent",
-      },
-      ringColor: {
-        accent: withOpacity("--accent-color"),
-        secondary: "var(--bg-secondary)",
-        transparent: "transparent",
-      },
-      gradientColorStops: {
-        "accent-primary": "var(--accent-primary)",
-        "accent-secondary": "var(--accent-secondary)",
-      },
       borderColor: {
         primary: "var(--border-primary)",
         "primary-hover": "var(--border-primary-hover)",
@@ -62,14 +45,13 @@ module.exports = {
         "accent-faded": "var(--accent-color-faded)",
         transparent: "transparent",
       },
+      gradientColorStops: {
+        "accent-primary": "var(--accent-primary)",
+        "accent-secondary": "var(--accent-secondary)",
+      },
       borderWidth: {
         sm: "1px",
         md: "2px",
-      },
-      screens: {
-        mobile: "320px",
-        tablet: "960px",
-        desktop: "1280px",
       },
     },
   },
