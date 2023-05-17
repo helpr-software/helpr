@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     dirs: ["store"],
   },
 
-  modules: ["@nuxt/image-edge", "@nuxtjs/i18n", "@nuxtjs/tailwindcss", "@vueuse/nuxt", "@nuxtjs/supabase", "@pinia/nuxt", "nuxt-headlessui", "nuxt-mailer"],
+  modules: ["@nuxt/image-edge", "@nuxtjs/i18n", "@vueuse/nuxt", "@nuxtjs/supabase", "@pinia/nuxt", "nuxt-headlessui", "nuxt-mailer", "@nuxthq/ui"],
 
   runtimeConfig: {
     mailerUser: process.env.MAILER_USER,
@@ -68,4 +68,6 @@ export default defineNuxtConfig({
     },
     domains: ["uynsrkwqyplqhfrmdaqw.supabase.co"],
   },
+
+  plugins: [{ src: "~/plugins/vercel.ts", mode: "client" }],
 });
