@@ -17,7 +17,21 @@ export default defineNuxtConfig({
     dirs: ["store"],
   },
 
-  modules: ["@nuxt/image-edge", "@nuxtjs/i18n", "@nuxtjs/tailwindcss", "@vueuse/nuxt", "@nuxtjs/supabase", "@pinia/nuxt", "nuxt-headlessui", "nuxt-mailer"],
+  modules: [
+    "nuxt-vue3-google-signin",
+    "@nuxt/image-edge",
+    "@nuxtjs/i18n",
+    "@nuxtjs/tailwindcss",
+    "@vueuse/nuxt",
+    "@nuxtjs/supabase",
+    "@pinia/nuxt",
+    "nuxt-headlessui",
+    "nuxt-mailer",
+  ],
+
+  googleSignIn: {
+    clientId: process.env.GOOGLE_CLIENT_ID,
+  },
 
   runtimeConfig: {
     mailerUser: process.env.MAILER_USER,
@@ -27,6 +41,10 @@ export default defineNuxtConfig({
       authSecret: process.env.AUTH_TOKEN_SECRET,
       refreshTokenSecret: process.env.REFRESH_TOKEN_SECRET,
       openAiKey: process.env.OPENAI_API_KEY,
+      google: {
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      },
     },
     public: {
       googleClientId: process.env.GOOGLE_CLIENT_ID,

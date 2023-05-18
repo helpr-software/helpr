@@ -5,12 +5,6 @@
 @import "animation";
 @import "themes/dark";
 
-html,body, #__nuxt, #__layout{
-  @apply bg-primary;
-  height:100%!important;
-  width: 100%!important;
-}
-
 @layer components {
   .input {
     @apply bg-secondary;
