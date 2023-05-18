@@ -48,22 +48,6 @@ export default defineNuxtConfig({
     },
     public: {
       googleClientId: process.env.GOOGLE_CLIENT_ID,
-      github: {
-        clientId: process.env.GITHUB_CLIENT_ID,
-        clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackUrl: process.env.GITHUB_CALLBACK_URL,
-      },
-      linear: {
-        apiKey: process.env.LINEAR_API_KEY,
-        clientId: process.env.LINEAR_CLIENT_ID,
-        clientSecret: process.env.LINEAR_CLIENT_SECRET,
-        callbackUrl: process.env.LINEAR_CALLBACK_URL,
-      },
-      linkedin: {
-        clientId: process.env.LINKEDIN_CLIENT_ID,
-        clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
-        callbackUrl: process.env.LINKEDIN_CALLBACK_URL,
-      },
       appDomain: process.env.FRONTEND_URL,
       appEnv: process.env.APP_ENV,
       apiUrl: process.env.API_URL,
