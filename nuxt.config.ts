@@ -23,7 +23,6 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
-    "@nuxtjs/supabase",
     "@pinia/nuxt",
     "nuxt-headlessui",
     "nuxt-mailer",
@@ -37,9 +36,8 @@ export default defineNuxtConfig({
     mailerUser: process.env.MAILER_USER,
     mailerPass: process.env.MAILER_PASSWORD,
     private: {
+      encryptionKey: process.env.ENCRYPTION_KEY,
       stripeSecretKey: process.env.STRIPE_SECRET_KEY,
-      authSecret: process.env.AUTH_TOKEN_SECRET,
-      refreshTokenSecret: process.env.REFRESH_TOKEN_SECRET,
       openAiKey: process.env.OPENAI_API_KEY,
       google: {
         clientId: process.env.GOOGLE_CLIENT_ID,

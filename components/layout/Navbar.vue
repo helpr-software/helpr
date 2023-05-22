@@ -1,14 +1,25 @@
 <script lang="ts" setup>
+import LanguageSelector from "~/components/settings/LanguageSelector.vue";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { Bars3Icon } from "@heroicons/vue/24/outline";
-import LanguageSelector from "~/components/settings/LanguageSelector.vue";
+const { t } = useI18n();
 
 const navigation = getNavigation("home");
 const userStore = useUserStore();
+const route = useRoute();
 
 const user = computed(() => {
-  return false;
+  return userStore.getUser;
 });
+
+async function logout() {
+  await useFetch("/api/auth/logout", {
+    method: "POST",
+  });
+  useSuccessToast(t("profile.logout") + " " + user.value?.firstname);
+  userStore.logout();
+  await useRouter().push("/login");
+}
 </script>
 
 <template>
@@ -20,9 +31,7 @@ const user = computed(() => {
             v-for="item in navigation"
             :id="item.name.toLowerCase()"
             :key="item.name"
-            :class="[
-              item.name === $route.name ? 'text-gradient' : 'text-primary',
-            ]"
+            :class="[item.name === route.name ? 'text-gradient' : 'text-primary']"
             :to="item.to"
             class="text-xs font-semibold leading-6 hover:text-gradient transition-colors duration-300 ease-in-out"
           >
@@ -31,9 +40,7 @@ const user = computed(() => {
         </div>
         <Menu as="div" class="relative inline-block text-left lg:hidden">
           <div>
-            <MenuButton
-              class="inline-flex w-full justify-center rounded-md font-medium text-primary focus:outline-none"
-            >
+            <MenuButton class="inline-flex w-full justify-center rounded-md font-medium text-primary focus:outline-none">
               <span class="sr-only">Open menu</span>
               <Bars3Icon class="w-6 h-6" />
             </MenuButton>
@@ -56,19 +63,10 @@ const user = computed(() => {
                 </p>
               </div>
               <div>
-                <MenuItem
-                  v-for="item in navigation"
-                  :key="item.name"
-                  v-slot="{ active }"
-                >
+                <MenuItem v-for="item in navigation" :key="item.name" v-slot="{ active }">
                   <NuxtLink
                     :id="item.name.toLowerCase()"
-                    :class="[
-                      active || item.name === $route.name
-                        ? 'bg-accent-faded text-accent'
-                        : 'text-primary',
-                      'block w-full px-4 py-2 text-left text-sm',
-                    ]"
+                    :class="[active || item.name === route.name ? 'bg-accent-faded text-accent' : 'text-primary', 'block w-full px-4 py-2 text-left text-sm']"
                     :to="item.to"
                   >
                     {{ $t("navigation." + item.name.toLowerCase()) }}
@@ -78,45 +76,29 @@ const user = computed(() => {
               <div v-if="!user">
                 <MenuItem v-slot="{ active }">
                   <NuxtLink
-                    :class="
-                      active ? 'bg-accent-faded text-accent' : 'text-primary'
-                    "
+                    :class="active ? 'bg-accent-faded text-accent' : 'text-primary'"
                     class="w-full block text-left px-4 py-2 text-sm text-primary"
                     to="/auth/login"
                   >
                     {{ $t("navigation.login") }}
                   </NuxtLink>
                 </MenuItem>
-                <MenuItem v-slot="{ active }">
-                  <NuxtLink
-                    :class="
-                      active ? 'bg-accent-faded text-accent' : 'text-primary'
-                    "
-                    class="w-full block text-left px-4 py-2 text-sm text-primary"
-                    to="/auth/signup"
-                  >
-                    {{ $t("navigation.signup") }}
-                  </NuxtLink>
-                </MenuItem>
               </div>
               <div v-else>
                 <MenuItem v-slot="{ active }">
                   <NuxtLink
-                    :class="
-                      active ? 'bg-accent-faded text-accent' : 'text-primary'
-                    "
+                    :class="active ? 'bg-accent-faded text-accent' : 'text-primary'"
                     class="w-full block text-left px-4 py-2 text-sm text-primary"
-                    to="/app/my-flows"
+                    to="/app/settings"
                   >
                     {{ $t("navigation.open_app") }}
                   </NuxtLink>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
                   <button
-                    :class="
-                      active ? 'bg-accent-faded text-accent' : 'text-red-600'
-                    "
+                    :class="active ? 'bg-accent-faded text-accent' : 'text-red-600'"
                     class="w-full block text-left px-4 py-2 text-sm text-primary"
+                    @click="logout()"
                   >
                     {{ $t("navigation.logout") }}
                   </button>
@@ -130,19 +112,9 @@ const user = computed(() => {
       <div class="flex flex-1 justify-end items-center gap-x-4">
         <LanguageSelector />
         <div v-if="!user" class="hidden lg:flex lg:gap-x-4">
-          <NuxtLink class="btn-primary py-1" to="/auth/login"
-            >{{ $t("navigation.login") }}
-          </NuxtLink>
-          <NuxtLink class="btn-secondary py-1" to="/auth/signup"
-            >{{ $t("navigation.signup") }}
-          </NuxtLink>
+          <NuxtLink class="btn-primary py-1" to="/auth/login">{{ $t("navigation.login") }} </NuxtLink>
         </div>
-        <NuxtLink
-          v-else
-          class="btn-secondary py-1 hidden md:block"
-          to="/app/my-flows"
-          >{{ $t("navigation.open_app") }}
-        </NuxtLink>
+        <NuxtLink v-else class="btn-secondary py-1 hidden md:block" to="/app/settings">{{ $t("navigation.open_app") }} </NuxtLink>
       </div>
     </nav>
   </header>

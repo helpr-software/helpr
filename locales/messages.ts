@@ -22,6 +22,9 @@ import fr_login from "./fr/auth/login.json";
 import en_signup from "./en/auth/signup.json";
 import fr_signup from "./fr/auth/signup.json";
 
+import en_settings from "./en/app/settings.json";
+import fr_settings from "./fr/app/settings.json";
+
 const messages = {
   en: {
     navigation: en_navigation,
@@ -32,6 +35,7 @@ const messages = {
     contact: en_contact,
     login: en_login,
     signup: en_signup,
+    settings: en_settings,
   },
   fr: {
     navigation: fr_navigation,
@@ -42,6 +46,7 @@ const messages = {
     contact: fr_contact,
     login: fr_login,
     signup: fr_signup,
+    settings: fr_settings,
   },
 };
 

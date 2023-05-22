@@ -1,29 +1,36 @@
 <script setup lang="ts">
 import LanguageSelector from "~/components/settings/LanguageSelector.vue";
 import { ImplicitFlowErrorResponse, ImplicitFlowSuccessResponse } from "vue3-google-signin";
+import { useUser } from "~/composables/useAuth";
+import { useUserStore } from "~/store/userStore";
 
 definePageMeta({
   name: "Login",
   title: "Login",
   description: "Login to your account",
+  middleware: "already-auth",
 });
 
 const user = computed(() => useUserStore().getUser);
 
 watch(user, (user) => {
   if (user) {
-    useRouter().push("/");
+    useRouter().push("/app/settings");
   }
 });
 
 async function handleOnSuccess(response: ImplicitFlowSuccessResponse) {
-  const { data } = await useFetch("/api/auth/login", {
+  await useFetch("/api/auth/login", {
     method: "POST",
     body: JSON.stringify({
       code: response.code,
     }),
   });
-  console.log("Result: ", data);
+  const user = await useUser();
+  if (user) {
+    useUserStore().setUser(user);
+    await useRouter().push("/app/settings");
+  }
 }
 
 function handleOnError(errorResponse: ImplicitFlowErrorResponse) {

@@ -22,3 +22,21 @@ export async function getGoogleInfos(code: string) {
     tokens: result.tokens as GoogleTokens,
   };
 }
+
+export async function isGoogleTokenValid(accessToken: string) {
+  try {
+    await client.getTokenInfo(accessToken);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+export async function revokeGoogleToken(accessToken: string) {
+  try {
+    await client.revokeToken(accessToken);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}

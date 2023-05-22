@@ -1,9 +1,11 @@
 export type User = {
   id: number;
   email: string;
-  username: string;
+  firstname: string;
+  lastname: string;
+  avatar: string;
+  accessToken: string;
   role: number;
-  isVerified: boolean;
   createdAt: string;
   updatedAt: string;
 };
