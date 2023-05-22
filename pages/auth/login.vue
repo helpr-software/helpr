@@ -1,24 +1,46 @@
 <script setup lang="ts">
 import LanguageSelector from "~/components/settings/LanguageSelector.vue";
+import { ImplicitFlowErrorResponse, ImplicitFlowSuccessResponse } from "vue3-google-signin";
+import { useUser } from "~/composables/useAuth";
+import { useUserStore } from "~/store/userStore";
 
 definePageMeta({
   name: "Login",
   title: "Login",
   description: "Login to your account",
+  middleware: "already-auth",
 });
 
 const user = computed(() => useUserStore().getUser);
 
 watch(user, (user) => {
   if (user) {
-    useRouter().push("/");
+    useRouter().push("/app/settings");
   }
 });
 
-const login = ref("");
-const password = ref("");
+async function handleOnSuccess(response: ImplicitFlowSuccessResponse) {
+  await useFetch("/api/auth/login", {
+    method: "POST",
+    body: JSON.stringify({
+      code: response.code,
+    }),
+  });
+  const user = await useUser();
+  if (user) {
+    useUserStore().setUser(user);
+    await useRouter().push("/app/settings");
+  }
+}
 
-const loading = ref(false);
+function handleOnError(errorResponse: ImplicitFlowErrorResponse) {
+  console.log("Error: ", errorResponse);
+}
+
+const { login } = useCodeClient({
+  onSuccess: handleOnSuccess,
+  onError: handleOnError,
+});
 </script>
 
 <template>
@@ -29,36 +51,9 @@ const loading = ref(false);
         {{ $t("login.signin_to_your_account") }}
       </h2>
     </div>
-    <div class="sm:mx-auto sm:w-full sm:max-w-md mt-12">
-      <form class="space-y-4">
-        <div>
-          <div class="mt-1">
-            <input id="login" name="login" autocomplete="email" required :placeholder="$t('login.login')" class="input w-full" v-model="login" />
-          </div>
-        </div>
-        <div>
-          <div class="mt-1">
-            <input
-              id="password"
-              name="password"
-              type="password"
-              autocomplete="current-password"
-              required
-              :placeholder="$t('login.password')"
-              class="input w-full"
-              v-model="password"
-            />
-          </div>
-        </div>
-        <div class="flex items-center justify-end">
-          <div class="text-sm">
-            <NuxtLink to="/password/forgot" class="font-medium text-accent hover:text-accent-hover">{{ $t("login.forgot_password") }} </NuxtLink>
-          </div>
-        </div>
-        <ButtonPrimary :full-width="true" :pending="loading" :text="$t('login.signin')" type="submit" />
-      </form>
-      <NuxtLink :to="{ name: 'Signup' }" class="btn-secondary w-full mt-6">{{ $t("login.dont_have_an_account") }}</NuxtLink>
-    </div>
+    <button @click="login()" class="gradient text-white font-bold py-2 px-4 rounded mt-6 mx-auto">
+      {{ $t("login.login_with_google") }}
+    </button>
     <div class="sm:mx-auto sm:w-full sm:max-w-md flex flex-col justify-center items-center">
       <LanguageSelector :is-text="true" class="mt-6" />
     </div>

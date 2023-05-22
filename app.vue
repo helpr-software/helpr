@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import EnvChecker from "~/components/layout/EnvChecker.vue";
+import { useUser } from "~/composables/useAuth";
 
 const { locale } = useI18n();
 
@@ -29,6 +30,8 @@ onMounted(() => {
   useGlobalStore().setLocale(userLocale.value);
   locale.value = userLocale.value;
 });
+
+await useUser();
 </script>
 
 <template>

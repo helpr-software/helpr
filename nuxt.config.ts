@@ -17,35 +17,35 @@ export default defineNuxtConfig({
     dirs: ["store"],
   },
 
-  modules: ["@nuxt/image-edge", "@nuxtjs/i18n", "@nuxtjs/tailwindcss", "@vueuse/nuxt", "@nuxtjs/supabase", "@pinia/nuxt", "nuxt-headlessui", "nuxt-mailer"],
+  modules: [
+    "nuxt-vue3-google-signin",
+    "@nuxt/image-edge",
+    "@nuxtjs/i18n",
+    "@nuxtjs/tailwindcss",
+    "@vueuse/nuxt",
+    "@pinia/nuxt",
+    "nuxt-headlessui",
+    "nuxt-mailer",
+  ],
+
+  googleSignIn: {
+    clientId: process.env.GOOGLE_CLIENT_ID,
+  },
 
   runtimeConfig: {
     mailerUser: process.env.MAILER_USER,
     mailerPass: process.env.MAILER_PASSWORD,
     private: {
+      encryptionKey: process.env.ENCRYPTION_KEY,
       stripeSecretKey: process.env.STRIPE_SECRET_KEY,
-      authSecret: process.env.AUTH_TOKEN_SECRET,
-      refreshTokenSecret: process.env.REFRESH_TOKEN_SECRET,
       openAiKey: process.env.OPENAI_API_KEY,
+      google: {
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      },
     },
     public: {
       googleClientId: process.env.GOOGLE_CLIENT_ID,
-      github: {
-        clientId: process.env.GITHUB_CLIENT_ID,
-        clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackUrl: process.env.GITHUB_CALLBACK_URL,
-      },
-      linear: {
-        apiKey: process.env.LINEAR_API_KEY,
-        clientId: process.env.LINEAR_CLIENT_ID,
-        clientSecret: process.env.LINEAR_CLIENT_SECRET,
-        callbackUrl: process.env.LINEAR_CALLBACK_URL,
-      },
-      linkedin: {
-        clientId: process.env.LINKEDIN_CLIENT_ID,
-        clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
-        callbackUrl: process.env.LINKEDIN_CALLBACK_URL,
-      },
       appDomain: process.env.FRONTEND_URL,
       appEnv: process.env.APP_ENV,
       apiUrl: process.env.API_URL,

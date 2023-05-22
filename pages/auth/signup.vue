@@ -1,35 +1,30 @@
 <script setup lang="ts">
 import LanguageSelector from "~/components/settings/LanguageSelector.vue";
+import { ImplicitFlowErrorResponse, ImplicitFlowSuccessResponse } from "vue3-google-signin";
 
 definePageMeta({
   name: "Signup",
   title: "Signup",
 });
 
-const username = ref("");
-const firstname = ref("");
-const lastname = ref("");
-const email = ref("");
-const password = ref("");
-const passwordConfirm = ref("");
-
-const loading = ref(false);
-
-const disabled = computed(() => {
-  return password.value.length < 8 || password.value !== passwordConfirm.value;
-});
-
-const signup = async () => {
-  loading.value = true;
-  await useSignup({
-    username: username.value,
-    firstname: firstname.value,
-    lastname: lastname.value,
-    email: email.value,
-    password: password.value,
+async function handleOnSuccess(response: ImplicitFlowSuccessResponse) {
+  const { data } = await useFetch("/api/auth/register", {
+    method: "POST",
+    body: JSON.stringify({
+      code: response.code,
+    }),
   });
-  loading.value = false;
-};
+  console.log("Result: ", data);
+}
+
+function handleOnError(errorResponse: ImplicitFlowErrorResponse) {
+  console.log("Error: ", errorResponse);
+}
+
+const { login } = useCodeClient({
+  onSuccess: handleOnSuccess,
+  onError: handleOnError,
+});
 </script>
 
 <template>
@@ -40,55 +35,9 @@ const signup = async () => {
         {{ $t("signup.signup_to_your_account") }}
       </h2>
     </div>
-    <div class="sm:mx-auto sm:w-full sm:max-w-md mt-12">
-      <form class="space-y-4" @submit.prevent="signup">
-        <input id="username" name="username" autocomplete="username" required :placeholder="$t('signup.username')" class="input w-full" v-model="username" />
-        <div class="flex flex-row gap-2">
-          <input
-            id="firstname"
-            name="firstname"
-            autocomplete="firstname"
-            required
-            :placeholder="$t('signup.firstname')"
-            class="input w-full"
-            v-model="firstname"
-          />
-          <input id="lastname" name="lastname" autocomplete="lastname" required :placeholder="$t('signup.lastname')" class="input w-full" v-model="lastname" />
-        </div>
-        <input id="email" name="email" type="email" autocomplete="email" required :placeholder="$t('signup.email')" class="input w-full" v-model="email" />
-        <input
-          id="password"
-          name="password"
-          type="password"
-          autocomplete="current-password"
-          required
-          :placeholder="$t('signup.password')"
-          class="input w-full"
-          v-model="password"
-        />
-        <input
-          id="confirm-password"
-          name="confirm-password"
-          type="password"
-          autocomplete="current-password"
-          required
-          :placeholder="$t('signup.confirm_password')"
-          class="input w-full"
-          v-model="passwordConfirm"
-        />
-        <ButtonPrimary
-          :full-width="true"
-          :pending="loading"
-          type="submit"
-          :disabled="disabled"
-          :text="$t('signup.signup')"
-          :class="disabled ? 'opacity-50 cursor-not-allowed' : ''"
-        />
-      </form>
-      <NuxtLink :to="{ name: 'Login' }" class="btn-secondary w-full mt-6">
-        {{ $t("signup.already_have_an_account") }}
-      </NuxtLink>
-    </div>
+    <button @click="login()" class="gradient text-white font-medium py-2 px-4 rounded mt-6 mx-auto">
+      {{ $t("login.login_with_google") }}
+    </button>
     <div class="sm:mx-auto sm:w-full sm:max-w-md flex flex-col justify-center items-center">
       <LanguageSelector :is-text="true" class="mt-6" />
     </div>

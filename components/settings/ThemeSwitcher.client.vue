@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline";
+import { MoonIcon } from "@heroicons/vue/24/outline";
 import { useLocalStorage } from "@vueuse/core";
 import ThemeCard from "~/components/settings/ThemeCard.vue";
 
@@ -15,7 +15,6 @@ defineProps({
 });
 
 const globalStore = useGlobalStore();
-const userStore = useUserStore();
 
 const premium = {
   name: "Premium",
@@ -44,26 +43,6 @@ const availableThemes = [
     value: "nebula",
     icon: MoonIcon,
   },
-  {
-    name: "Light Lime",
-    value: "light-lime",
-    icon: SunIcon,
-  },
-  {
-    name: "Light Cosmos",
-    value: "light-cosmos",
-    icon: SunIcon,
-  },
-  {
-    name: "Light Ardent",
-    value: "light-ardent",
-    icon: SunIcon,
-  },
-  {
-    name: "Light Nebula",
-    value: "light-nebula",
-    icon: SunIcon,
-  },
 ];
 
 const currentTheme = computed(() => {
@@ -79,6 +58,7 @@ const setTheme = (newTheme: string) => {
 
 <template>
   <div>
+    <!--
     <div v-if="userStore.isPremium || userStore.isAdmin" class="w-full mb-8">
       <ThemeCard
         :key="premium.name"
@@ -89,7 +69,7 @@ const setTheme = (newTheme: string) => {
         :available-themes="availableThemes"
         @click="setTheme(premium.value)"
       />
-    </div>
+    </div>-->
     <div class="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
       <ThemeCard
         v-for="theme in availableThemes"
