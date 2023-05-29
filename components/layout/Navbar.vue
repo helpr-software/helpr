@@ -18,7 +18,7 @@ async function logout() {
   });
   useSuccessToast(t("profile.logout") + " " + user.value?.firstname);
   userStore.logout();
-  await useRouter().push("/login");
+  await useRouter().push("/auth/login");
 }
 </script>
 

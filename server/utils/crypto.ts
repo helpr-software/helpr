@@ -1,13 +1,11 @@
-import AES from "crypto-js/aes";
-import enc from "crypto-js/enc-utf8";
+import Crypto from "crypto-js";
 
 export function encrypt(toEncrypt: string) {
   const secretKey = useRuntimeConfig().private.encryptionKey;
-  return AES.encrypt(toEncrypt, secretKey).toString();
+  return Crypto.AES.encrypt(toEncrypt, secretKey).toString();
 }
 
 export function decrypt(toDecrypt: string) {
   const secretKey = useRuntimeConfig().private.encryptionKey;
-  const bytes = AES.decrypt(toDecrypt, secretKey);
-  return bytes.toString(enc);
+  return Crypto.AES.decrypt(toDecrypt, secretKey).toString(Crypto.enc.Utf8);
 }

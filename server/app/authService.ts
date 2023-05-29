@@ -1,10 +1,10 @@
-import prisma from "~/server/database/client";
+import prisma, { formatUser } from "~/server/database/client";
 import { GoogleTokens, GoogleUser } from "~/types/Google";
 
 export async function login(userInfos: GoogleUser, tokens: GoogleTokens) {
   const { email, given_name, family_name, picture, locale } = userInfos;
   const { access_token, refresh_token } = tokens;
-  await prisma.user.upsert({
+  const user = await prisma.user.upsert({
     where: {
       email,
     },
@@ -18,10 +18,11 @@ export async function login(userInfos: GoogleUser, tokens: GoogleTokens) {
       lastname: family_name,
       avatar: picture,
       accessToken: access_token,
-      refreshToken: encrypt(refresh_token),
+      refreshToken: refresh_token,
     },
   });
   return {
+    user: formatUser(user),
     access_token,
   };
 }

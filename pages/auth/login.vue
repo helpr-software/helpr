@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import LanguageSelector from "~/components/settings/LanguageSelector.vue";
 import { ImplicitFlowErrorResponse, ImplicitFlowSuccessResponse } from "vue3-google-signin";
-import { useUser } from "~/composables/useAuth";
+import LanguageSelector from "~/components/settings/LanguageSelector.vue";
 import { useUserStore } from "~/store/userStore";
 
 definePageMeta({
@@ -20,15 +19,14 @@ watch(user, (user) => {
 });
 
 async function handleOnSuccess(response: ImplicitFlowSuccessResponse) {
-  await useFetch("/api/auth/login", {
+  const { data } = await useFetch("/api/auth/login", {
     method: "POST",
     body: JSON.stringify({
       code: response.code,
     }),
   });
-  const user = await useUser();
-  if (user) {
-    useUserStore().setUser(user);
+  if (data.value) {
+    useUserStore().setUser(data.value);
     await useRouter().push("/app/settings");
   }
 }

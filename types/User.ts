@@ -4,8 +4,8 @@ export type User = {
   firstname: string;
   lastname: string;
   avatar: string;
-  accessToken: string;
+  accessToken?: string;
   role: number;
   createdAt: string;
-  updatedAt: string;
+  updatedAt?: string;
 };
