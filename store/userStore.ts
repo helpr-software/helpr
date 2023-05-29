@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { User } from "@/types/User";
+import { Role } from "@prisma/client";
 
 interface UserState {
   user: User | null;
@@ -18,7 +19,7 @@ export const useUserStore = defineStore("user", {
   getters: {
     isAdmin(): boolean {
       if (this.user) {
-        return this.user.role === 2;
+        return this.user.role === Role.ADMIN;
       } else {
         return false;
       }
