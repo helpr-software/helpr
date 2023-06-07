@@ -1,6 +1,6 @@
 import prisma from "~/server/database/client";
 import { isString } from "@vueuse/core";
-import { Role } from "@prisma/client";
+import { Role } from "~/types/Role";
 import { H3Event } from "h3";
 
 export async function getUser(query: { id?: number; email?: string }) {
