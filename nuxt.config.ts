@@ -62,12 +62,5 @@ export default defineNuxtConfig({
     },
   },
 
-  image: {
-    alias: {
-      supabase: "https://uynsrkwqyplqhfrmdaqw.supabase.co/storage/v1/object/public",
-    },
-    domains: ["uynsrkwqyplqhfrmdaqw.supabase.co"],
-  },
-
   plugins: [{ src: "~/plugins/vercel.ts", mode: "client" }],
 });

@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { User } from "@/types/User";
-import { Role } from "@prisma/client";
+import { Role } from "~/types/Role";
 
 interface UserState {
   user: User | null;

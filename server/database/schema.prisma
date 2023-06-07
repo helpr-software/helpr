@@ -8,11 +8,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  USER
-  ADMIN
-}
-
 model User {
   id           Int      @id @default(autoincrement())
   email        String   @unique
@@ -21,7 +16,7 @@ model User {
   avatar       String   @db.VarChar(500)
   accessToken  String?  @unique @db.VarChar(500)
   refreshToken String?  @unique @db.VarChar(500)
-  role         Role     @default(USER)
+  role         String   @default("user")
   locale       String   @default("en")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
