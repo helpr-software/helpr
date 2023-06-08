@@ -12,9 +12,9 @@ const resetError = (error: any) => {
 </script>
 
 <template>
-  <div class="max-w-6xl mx-auto">
+  <div class="w-full">
     <NuxtErrorBoundary>
-      <NuxtPage class="m-4" />
+      <NuxtPage />
       <template #error="{ error }">
         <div class="p-8 bg-secondary rounded-md">
           <h2 class="text-4xl font-bold text-center">Error !</h2>

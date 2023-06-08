@@ -114,6 +114,8 @@ async function logout() {
         <div v-if="!user" class="hidden lg:flex lg:gap-x-4">
           <NuxtLink class="btn-primary py-1" to="/auth/login">{{ $t("navigation.login") }} </NuxtLink>
         </div>
+        <NuxtLink v-if="user" class="btn-secondary py-1" :to="`/app/profile/${user.id}`">{{ $t("navigation.profile") }}</NuxtLink>
+        <button v-if="user" class="btn-secondary py-1" @click="logout()">{{ $t("navigation.logout") }}</button>
         <NuxtLink v-else class="btn-secondary py-1 hidden md:block" to="/app/settings">{{ $t("navigation.open_app") }} </NuxtLink>
       </div>
     </nav>

@@ -1,4 +1,4 @@
-import { Role } from "@prisma/client";
+import { Role } from "~/types/Role";
 
 export type User = {
   id: number;
@@ -10,4 +10,14 @@ export type User = {
   role: Role;
   createdAt: string;
   updatedAt?: string;
+};
+
+export type formattedUser = {
+  id: number;
+  firstname: string;
+  lastname: string;
+  email: string;
+  role: string;
+  avatar: string;
+  createdAt: Date;
 };

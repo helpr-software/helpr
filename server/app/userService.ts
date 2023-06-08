@@ -1,4 +1,5 @@
-import prisma from "~/server/database/client";
+import prisma, { formatUser } from "~/server/database/client";
+import { formattedUser } from "~/types/User";
 import { isString } from "@vueuse/core";
 import { Role } from "~/types/Role";
 import { H3Event } from "h3";
@@ -24,4 +25,14 @@ export async function adminCheck(event: H3Event): Promise<boolean> {
   const user = await getUserByAccessToken(accessToken);
   if (!user) return false;
   return user.role === Role.ADMIN;
+}
+
+export async function getUserById(userId: number): Promise<formattedUser> {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+  if (!user) throw createError({ statusCode: 404, message: "User not found" });
+  return formatUser(user);
 }
