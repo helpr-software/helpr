@@ -14,22 +14,23 @@ defineProps({
     default: 6,
   },
 });
-
-const theme = computed(() => {
-  const currentTheme = useGlobalStore().getTheme;
-  if (currentTheme.includes("light")) {
-    return "dark";
-  } else {
-    return "light";
-  }
-});
 </script>
 
 <template>
   <div class="flex flex-shrink-0 items-center">
     <div v-if="!source">
-      <nuxt-img class="block lg:hidden" :src="'/assets/provider/' + theme + '/' + provider + '-logo.svg'" :class="['w-' + size, 'h-' + size]" />
-      <nuxt-img class="hidden w-auto lg:block" :src="'/assets/provider/' + theme + '/' + provider + '-logo.svg'" :class="['w-' + size, 'h-' + size]" />
+      <nuxt-img
+        class="block lg:hidden"
+        :src="'/assets/provider/light/' + provider + '-logo.svg'"
+        :class="['w-' + size, 'h-' + size]"
+        :alt="provider + ' logo'"
+      />
+      <nuxt-img
+        class="hidden w-auto lg:block"
+        :src="'/assets/provider/light/' + provider + '-logo.svg'"
+        :class="['w-' + size, 'h-' + size]"
+        :alt="provider + ' logo'"
+      />
     </div>
     <div v-else>
       <nuxt-img class="block w-auto lg:hidden" :src="source" :alt="provider + ' logo'" :class="['h-' + size]" />
