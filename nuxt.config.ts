@@ -20,13 +20,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   modules: [
-    "nuxt-vue3-google-signin",
-    "@nuxt/image-edge",
-    "@nuxtjs/i18n",
     "@nuxtjs/tailwindcss",
     "@nuxtjs/color-mode",
+    "@nuxt/image-edge",
+    "@nuxtjs/robots",
+    "@nuxtjs/i18n",
     "@vueuse/nuxt",
     "@pinia/nuxt",
+    "nuxt-vue3-google-signin",
     "nuxt-headlessui",
     "nuxt-mailer",
   ],
@@ -93,7 +94,7 @@ export default defineNuxtConfig({
 
   robots: {
     UserAgent: "*",
-    Disallow: "",
+    Disallow: "/app",
   },
 
   plugins: [{ src: "~/plugins/vercel.ts", mode: "client" }],
