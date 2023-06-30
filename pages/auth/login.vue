@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ImplicitFlowErrorResponse, ImplicitFlowSuccessResponse } from "vue3-google-signin";
 import LanguageSelector from "~/components/settings/LanguageSelector.vue";
 import { useUserStore } from "~/store/userStore";
+import { User } from "~/types/User";
+const { t } = useI18n();
 
 definePageMeta({
   name: "Login",
@@ -12,33 +13,38 @@ definePageMeta({
 
 const user = computed(() => useUserStore().getUser);
 
+const login = ref("");
+const password = ref("");
+const loading = ref(false);
+
 watch(user, (user) => {
   if (user) {
     useRouter().push("/app/settings");
   }
 });
 
-async function handleOnSuccess(response: ImplicitFlowSuccessResponse) {
-  const { data } = await useFetch("/api/auth/login", {
+async function signin() {
+  loading.value = true;
+  const { data, error } = await useFetch<User>("/api/auth/login", {
     method: "POST",
-    body: JSON.stringify({
-      code: response.code,
-    }),
+    body: {
+      login: login.value,
+      password: password.value,
+    },
   });
   if (data.value) {
+    useSuccessToast(t("login.welcome_back") + " " + data.value.firstname + " " + data.value.lastname);
     useUserStore().setUser(data.value);
-    await useRouter().push("/app/settings");
+    await useRouter().push("/app/my-flows");
+  } else if (error.value?.statusMessage === "user_not_found") {
+    useErrorToast(t("error.user_not_found"));
+  } else if (error.value?.statusMessage === "invalid_password") {
+    useErrorToast(t("error.invalid_password"));
+  } else {
+    useErrorToast(t("error.unknown_error"));
   }
+  loading.value = false;
 }
-
-function handleOnError(errorResponse: ImplicitFlowErrorResponse) {
-  console.log("Error: ", errorResponse);
-}
-
-const { login } = useCodeClient({
-  onSuccess: handleOnSuccess,
-  onError: handleOnError,
-});
 </script>
 
 <template>
@@ -49,9 +55,36 @@ const { login } = useCodeClient({
         {{ $t("login.signin_to_your_account") }}
       </h2>
     </div>
-    <button @click="login()" class="gradient text-white font-bold py-2 px-4 rounded mt-6 mx-auto">
-      {{ $t("login.login_with_google") }}
-    </button>
+    <div class="sm:mx-auto sm:w-full sm:max-w-md mt-12">
+      <form class="space-y-4" @submit.prevent="signin">
+        <div>
+          <div class="mt-1">
+            <input id="login" name="login" autocomplete="email" required :placeholder="$t('login.login')" class="input w-full" v-model="login" />
+          </div>
+        </div>
+        <div>
+          <div class="mt-1">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              :placeholder="$t('login.password')"
+              class="input w-full"
+              v-model="password"
+            />
+          </div>
+        </div>
+        <div class="flex items-center justify-end">
+          <div class="text-sm">
+            <NuxtLink to="/password/forgot" class="font-medium text-accent hover:text-accent-hover">{{ $t("login.forgot_password") }} </NuxtLink>
+          </div>
+        </div>
+        <ButtonPrimary :full-width="true" :pending="loading" :text="$t('login.signin')" type="submit" />
+      </form>
+      <NuxtLink :to="{ name: 'Signup' }" class="btn-secondary w-full mt-6">{{ $t("login.dont_have_an_account") }}</NuxtLink>
+    </div>
     <div class="sm:mx-auto sm:w-full sm:max-w-md flex flex-col justify-center items-center">
       <LanguageSelector :is-text="true" class="mt-6" />
     </div>

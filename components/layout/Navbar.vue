@@ -1,12 +1,10 @@
-<script lang="ts" setup>
-import LanguageSelector from "~/components/settings/LanguageSelector.vue";
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
+<script setup lang="ts">
+import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import { Bars3Icon } from "@heroicons/vue/24/outline";
 const { t } = useI18n();
 
 const navigation = getNavigation("home");
 const userStore = useUserStore();
-const route = useRoute();
 
 const user = computed(() => {
   return userStore.getUser;
@@ -16,9 +14,9 @@ async function logout() {
   await useFetch("/api/auth/logout", {
     method: "POST",
   });
-  useSuccessToast(t("profile.logout") + " " + user.value?.firstname);
+  useSuccessToast(t("profile.logout") + " " + user.value?.firstname ?? "");
   userStore.logout();
-  await useRouter().push("/auth/login");
+  await useRouter().push("/login");
 }
 </script>
 
@@ -29,11 +27,11 @@ async function logout() {
         <div class="hidden lg:flex lg:gap-x-8">
           <NuxtLink
             v-for="item in navigation"
-            :id="item.name.toLowerCase()"
             :key="item.name"
-            :class="[item.name === route.name ? 'text-gradient' : 'text-primary']"
             :to="item.to"
+            :id="item.name.toLowerCase()"
             class="text-xs font-semibold leading-6 hover:text-gradient transition-colors duration-300 ease-in-out"
+            :class="[item.name === $route.name ? 'text-gradient' : 'text-primary']"
           >
             {{ $t("navigation." + item.name.toLowerCase()) }}
           </NuxtLink>
@@ -56,18 +54,16 @@ async function logout() {
             <MenuItems
               class="absolute left-0 w-56 origin-top-left bg-secondary rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none divide-y divide-gray-600"
             >
-              <div v-if="user" class="px-4 py-3">
+              <div class="px-4 py-3" v-if="user">
                 <p class="text-sm">Signed in as</p>
-                <p class="truncate text-sm font-medium text-accent">
-                  {{ user.email }}
-                </p>
+                <p class="truncate text-sm font-medium text-accent">{{ user.email }}</p>
               </div>
               <div>
-                <MenuItem v-for="item in navigation" :key="item.name" v-slot="{ active }">
+                <MenuItem v-slot="{ active }" v-for="item in navigation" :key="item.name">
                   <NuxtLink
-                    :id="item.name.toLowerCase()"
-                    :class="[active || item.name === route.name ? 'bg-accent-faded text-accent' : 'text-primary', 'block w-full px-4 py-2 text-left text-sm']"
                     :to="item.to"
+                    :id="item.name.toLowerCase()"
+                    :class="[active || item.name === $route.name ? 'bg-accent-faded text-accent' : 'text-primary', 'block w-full px-4 py-2 text-left text-sm']"
                   >
                     {{ $t("navigation." + item.name.toLowerCase()) }}
                   </NuxtLink>
@@ -76,29 +72,38 @@ async function logout() {
               <div v-if="!user">
                 <MenuItem v-slot="{ active }">
                   <NuxtLink
-                    :class="active ? 'bg-accent-faded text-accent' : 'text-primary'"
-                    class="w-full block text-left px-4 py-2 text-sm text-primary"
                     to="/auth/login"
+                    class="w-full block text-left px-4 py-2 text-sm text-primary"
+                    :class="active ? 'bg-accent-faded text-accent' : 'text-primary'"
                   >
                     {{ $t("navigation.login") }}
+                  </NuxtLink>
+                </MenuItem>
+                <MenuItem v-slot="{ active }">
+                  <NuxtLink
+                    to="/auth/signup"
+                    class="w-full block text-left px-4 py-2 text-sm text-primary"
+                    :class="active ? 'bg-accent-faded text-accent' : 'text-primary'"
+                  >
+                    {{ $t("navigation.signup") }}
                   </NuxtLink>
                 </MenuItem>
               </div>
               <div v-else>
                 <MenuItem v-slot="{ active }">
                   <NuxtLink
-                    :class="active ? 'bg-accent-faded text-accent' : 'text-primary'"
-                    class="w-full block text-left px-4 py-2 text-sm text-primary"
                     to="/app/settings"
+                    class="w-full block text-left px-4 py-2 text-sm text-primary"
+                    :class="active ? 'bg-accent-faded text-accent' : 'text-primary'"
                   >
                     {{ $t("navigation.open_app") }}
                   </NuxtLink>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
                   <button
-                    :class="active ? 'bg-accent-faded text-accent' : 'text-red-600'"
                     class="w-full block text-left px-4 py-2 text-sm text-primary"
                     @click="logout()"
+                    :class="active ? 'bg-accent-faded text-accent' : 'text-red-600'"
                   >
                     {{ $t("navigation.logout") }}
                   </button>
@@ -110,13 +115,12 @@ async function logout() {
       </div>
       <Logo :isText="true" :size="6" />
       <div class="flex flex-1 justify-end items-center gap-x-4">
-        <LanguageSelector />
+        <SettingsLanguageSelector />
         <div v-if="!user" class="hidden lg:flex lg:gap-x-4">
-          <NuxtLink class="btn-primary py-1" to="/auth/login">{{ $t("navigation.login") }} </NuxtLink>
+          <NuxtLink to="/auth/login" class="btn-primary py-1">{{ $t("navigation.login") }}</NuxtLink>
+          <NuxtLink to="/auth/signup" class="btn-secondary py-1">{{ $t("navigation.signup") }}</NuxtLink>
         </div>
-        <NuxtLink v-if="user" class="btn-secondary py-1" :to="`/app/profile/${user.id}`">{{ $t("navigation.profile") }}</NuxtLink>
-        <button v-if="user" class="btn-secondary py-1" @click="logout()">{{ $t("navigation.logout") }}</button>
-        <NuxtLink v-else class="btn-secondary py-1 hidden md:block" to="/app/settings">{{ $t("navigation.open_app") }} </NuxtLink>
+        <NuxtLink to="/app/settings" class="btn-secondary py-1 hidden md:block" v-else>{{ $t("navigation.open_app") }}</NuxtLink>
       </div>
     </nav>
   </header>
