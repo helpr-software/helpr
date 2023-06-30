@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import EnvChecker from "~/components/layout/EnvChecker.vue";
 import { useUser } from "~/composables/useAuth";
-
-const { locale } = useI18n();
 
 useHead({
   title: useAppConfig().appTitle,
@@ -17,6 +14,27 @@ useHead({
       type: "image/x-icon",
       href: "/favicon.ico",
     },
+    {
+      rel: "apple-touch-icon",
+      sizes: "180x180",
+      href: "/apple-touch-icon.png",
+    },
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "32x32",
+      href: "/favicon-32x32.png",
+    },
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "16x16",
+      href: "/favicon-16x16.png",
+    },
+    {
+      rel: "manifest",
+      href: "/site.webmanifest",
+    },
   ],
 });
 await useUser();
@@ -25,7 +43,7 @@ await useUser();
 <template>
   <Html>
     <Body class="bg-primary m-0 p-0 text-primary">
-      <EnvChecker />
+      <LayoutEnvChecker />
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
