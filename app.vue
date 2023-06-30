@@ -19,23 +19,11 @@ useHead({
     },
   ],
 });
-
-const theme = computed(() => useGlobalStore().getTheme);
-
-onMounted(() => {
-  const userLocale = useLocalStorage("helpr_locale", "en");
-  const userTheme = useLocalStorage("helpr_theme", "cosmos");
-
-  useGlobalStore().setTheme(userTheme.value);
-  useGlobalStore().setLocale(userLocale.value);
-  locale.value = userLocale.value;
-});
-
 await useUser();
 </script>
 
 <template>
-  <Html :data-theme="theme">
+  <Html>
     <Body class="bg-primary m-0 p-0 text-primary">
       <EnvChecker />
       <NuxtLayout>

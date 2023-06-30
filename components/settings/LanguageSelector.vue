@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-const { locale } = useI18n();
-import { useLocalStorage } from "@vueuse/core";
+const { locale, setLocaleCookie } = useI18n();
 
 defineProps({
   isText: {
@@ -10,7 +9,7 @@ defineProps({
   },
 });
 
-const availableLocales = [
+const locales = [
   {
     name: "English",
     iso: "en",
@@ -23,26 +22,16 @@ const availableLocales = [
   },
 ];
 
-watch(locale, (newLang) => {
-  locale.value = newLang;
-  useLocalStorage("helpr_locale", newLang);
-});
-
-const setLocale = (newLocale: string) => {
-  locale.value = newLocale;
-  useLocalStorage("helpr_locale", newLocale).value = newLocale;
-};
-
-const currentLocale = computed(() => {
-  return availableLocales.find((l) => l.iso === locale.value);
+watch(locale, (newLocale) => {
+  setLocaleCookie(newLocale);
 });
 </script>
 
 <template>
   <Menu as="div" class="relative inline-block text-left">
     <MenuButton as="button" class="inline-flex gap-2 justify-center w-full px-4 py-2 text-sm font-medium text-primary border border-transparent rounded-md">
-      <span>{{ currentLocale.flag }}</span>
-      <span v-if="isText">{{ currentLocale.name }}</span>
+      <span>{{ locales.find((l) => l.iso === $i18n.locale).flag }}</span>
+      <span v-if="isText">{{ locales.find((l) => l.iso === $i18n.locale).name }}</span>
     </MenuButton>
     <transition
       enter-active-class="transition ease-out duration-100"
@@ -54,15 +43,19 @@ const currentLocale = computed(() => {
     >
       <MenuItems as="div" class="absolute mt-2 origin-center bg-primary border border-muted divide-y divide-muted rounded-md shadow-lg outline-none">
         <MenuItem
-          v-for="locale in availableLocales"
-          :key="locale.name"
+          v-for="locale in $i18n.availableLocales"
+          :key="locale"
           as="button"
-          @click="setLocale(locale.iso)"
+          @click="() => ($i18n.locale = $i18n.locale === 'en' ? 'fr' : 'en')"
           class="flex justify-between w-full px-4 py-2 text-sm text-primary hover:bg-secondary"
         >
           <div class="flex items-center gap-2">
-            <span class="text-muted">{{ locale.flag }}</span>
-            <span v-if="isText">{{ locale.name }}</span>
+            <span class="text-muted">
+              {{ locales.find((l) => l.iso === locale).flag }}
+            </span>
+            <span v-if="isText">
+              {{ locales.find((l) => l.iso === locale).name }}
+            </span>
           </div>
         </MenuItem>
       </MenuItems>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   name: {
     type: String,
     required: true,
@@ -16,8 +16,6 @@ const props = defineProps({
     required: true,
   },
 });
-
-const globalStore = useGlobalStore();
 </script>
 
 <template>
