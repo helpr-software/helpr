@@ -14,7 +14,7 @@ html {
   --font-placeholder: #403D46;
 }
 
-html.lime {
+.lime {
   --accent-color: 16, 185, 129;
   --accent-color-hover: 5, 150, 105;
   --accent-color-faded: rgba(5, 150, 105, 0.1);
@@ -26,7 +26,7 @@ html.lime {
   --accent-secondary: #2DFFF5;
 }
 
-html.cosmos {
+.cosmos {
     --accent-color: 238, 73, 253;
     --accent-color-hover: 199, 43, 255;
     --accent-color-faded: rgba(199, 43, 255, 0.1);
@@ -38,7 +38,7 @@ html.cosmos {
     --accent-secondary: #5A069B;
 }
 
-html.ardent {
+.ardent {
   --accent-color: 255, 64, 102;
   --accent-color-hover: 255, 64, 102;
   --accent-color-faded: rgba(255, 64, 102, 0.1);
@@ -50,7 +50,7 @@ html.ardent {
   --accent-secondary: #FF4066;
 }
 
-html.nebula {
+.nebula {
   --accent-color: 4, 187, 244;
   --accent-color-hover: 4, 187, 244;
   --accent-color-faded: rgba(4, 187, 244, 0.1);
@@ -62,7 +62,7 @@ html.nebula {
   --accent-secondary: #3E0CAB;
 }
 
-html.premium {
+.premium {
     --accent-color: 211, 170, 0;
     --accent-color-hover: 211, 170, 0;
     --accent-color-faded: rgba(211, 170, 0, 0.1);

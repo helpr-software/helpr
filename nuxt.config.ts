@@ -82,7 +82,7 @@ export default defineNuxtConfig({
         iso: "fr-FR",
       },
     ],
-    baseUrl: "https://helprapp.fr",
+    baseUrl: "https://helpr.tech",
     vueI18n: {
       legacy: false,
       locale: "en",
