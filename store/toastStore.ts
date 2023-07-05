@@ -10,7 +10,7 @@ type toastState = {
 export const useToastStore = defineStore({
   id: "toast",
   state: (): toastState => ({
-    show: true,
+    show: false,
     title: "",
     message: "",
     type: "success",
