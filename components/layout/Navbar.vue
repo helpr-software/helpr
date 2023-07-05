@@ -14,7 +14,7 @@ async function logout() {
   await useFetch("/api/auth/logout", {
     method: "POST",
   });
-  useSuccessToast(t("profile.logout") + " " + user.value?.username ?? "");
+  useToastStore().showSuccessToast(t("profile.logout") + " " + user.value?.username ?? "");
   userStore.logout();
   await useRouter().push("/auth/login");
 }

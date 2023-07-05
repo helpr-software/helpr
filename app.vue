@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useUser } from "~/composables/useAuth";
+import { useToastStore } from "~/store/toastStore";
 
 useHead({
   title: useAppConfig().appTitle,
@@ -38,12 +39,23 @@ useHead({
   ],
 });
 await useUser();
+
+const toastStore = useToastStore();
+const toast = computed(() => {
+  return {
+    show: toastStore.getShow,
+    title: toastStore.getTitle,
+    message: toastStore.getMessage,
+    type: toastStore.getType,
+  };
+});
 </script>
 
 <template>
   <Html>
     <Body class="bg-primary m-0 p-0 text-primary">
       <LayoutEnvChecker />
+      <ToastsBasic :show="toast.show" :title="toast.title" :description="toast.message" :type="toast.type" @close="toastStore.closeToast()" />
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>

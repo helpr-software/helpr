@@ -21,10 +21,11 @@ const login = ref("");
 const password = ref("");
 
 const loading = ref(false);
+const toastStore = useToastStore();
 
 async function signin() {
   loading.value = true;
-  const { data, error } = await useFetch<User>("/api/auth/login", {
+  const { data } = await useFetch<User>("/api/auth/login", {
     method: "POST",
     body: {
       login: login.value,
@@ -32,15 +33,11 @@ async function signin() {
     },
   });
   if (data.value) {
-    useSuccessToast(t("login.welcome_back") + " " + data.value.username);
+    toastStore.showSuccessToast(t("login.welcome_back") + " " + data.value.username);
     useUserStore().setUser(data.value);
     await useRouter().push("/app/settings");
-  } else if (error.value?.statusMessage === "user_not_found") {
-    useErrorToast(t("error.user_not_found"));
-  } else if (error.value?.statusMessage === "invalid_password") {
-    useErrorToast(t("error.invalid_password"));
   } else {
-    useErrorToast(t("error.unknown_error"));
+    toastStore.showErrorToast(t("error.unknown_error"));
   }
   loading.value = false;
 }

@@ -1,5 +1,4 @@
 import { Role } from "~/enums/Role";
-import { Session } from "~/types/Session";
 
 export type User = {
   id: number;
@@ -12,7 +11,6 @@ export type User = {
   role: Role;
   createdAt: Date;
   updatedAt?: Date;
-  sessions?: Session[];
 };
 
 export type publicUser = {

@@ -31,6 +31,9 @@ import fr_password from "./fr/password.json";
 import en_profile from "./en/app/profile.json";
 import fr_profile from "./fr/app/profile.json";
 
+import en_error from "./en/error.json";
+import fr_error from "./fr/error.json";
+
 const messages = {
   en: {
     navigation: en_navigation,
@@ -44,6 +47,7 @@ const messages = {
     settings: en_settings,
     password: en_password,
     profile: en_profile,
+    error: en_error,
   },
   fr: {
     navigation: fr_navigation,
@@ -57,6 +61,7 @@ const messages = {
     settings: fr_settings,
     password: fr_password,
     profile: fr_profile,
+    error: fr_error,
   },
 };
 

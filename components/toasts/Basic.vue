@@ -26,6 +26,17 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["close"]);
+
+watch(
+  () => props.show,
+  (value) => {
+    if (value) {
+      setTimeout(() => {
+        emit("close");
+      }, props.duration);
+    }
+  },
+);
 </script>
 
 <template>
@@ -39,7 +50,7 @@ const emit = defineEmits(["close"]);
         leave-from-class="opacity-100"
         leave-to-class="opacity-0"
       >
-        <div v-if="show" class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-secondary shadow-lg ring-1 ring-black ring-opacity-5">
+        <div v-if="show" class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-secondary shadow-lg border-primary border-[1px]">
           <div class="p-4">
             <div class="flex items-start">
               <div class="flex-shrink-0">
@@ -49,7 +60,7 @@ const emit = defineEmits(["close"]);
                 <ShieldExclamationIcon class="h-6 w-6 text-blue-400" aria-hidden="true" v-if="type === 'info'" />
               </div>
               <div class="ml-3 w-0 flex-1 pt-0.5">
-                <p class="text-sm font-medium text-primary">
+                <p class="text-base font-medium text-primary">
                   {{ title }}
                 </p>
                 <p class="mt-1 text-sm text-muted" v-if="description">
