@@ -25,6 +25,12 @@ import fr_signup from "./fr/auth/signup.json";
 import en_settings from "./en/app/settings.json";
 import fr_settings from "./fr/app/settings.json";
 
+import en_password from "./en/password.json";
+import fr_password from "./fr/password.json";
+
+import en_profile from "./en/app/profile.json";
+import fr_profile from "./fr/app/profile.json";
+
 const messages = {
   en: {
     navigation: en_navigation,
@@ -36,6 +42,8 @@ const messages = {
     login: en_login,
     signup: en_signup,
     settings: en_settings,
+    password: en_password,
+    profile: en_profile,
   },
   fr: {
     navigation: fr_navigation,
@@ -47,6 +55,8 @@ const messages = {
     login: fr_login,
     signup: fr_signup,
     settings: fr_settings,
+    password: fr_password,
+    profile: fr_profile,
   },
 };
 
