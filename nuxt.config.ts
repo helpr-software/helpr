@@ -47,6 +47,8 @@ export default defineNuxtConfig({
     mailerUser: process.env.MAILER_USER,
     mailerPass: process.env.MAILER_PASSWORD,
     private: {
+      authSecret: process.env.AUTH_TOKEN_SECRET,
+      refreshTokenSecret: process.env.REFRESH_TOKEN_SECRET,
       resendApiKey: process.env.RESEND_API_KEY,
       encryptionKey: process.env.ENCRYPTION_KEY,
       stripeSecretKey: process.env.STRIPE_SECRET_KEY,
@@ -54,6 +56,12 @@ export default defineNuxtConfig({
       google: {
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      },
+      linear: {
+        apiKey: process.env.LINEAR_API_KEY,
+        clientId: process.env.LINEAR_CLIENT_ID,
+        clientSecret: process.env.LINEAR_CLIENT_SECRET,
+        callbackUrl: process.env.LINEAR_CALLBACK_URL,
       },
     },
     public: {

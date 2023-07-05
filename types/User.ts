@@ -1,23 +1,28 @@
-import { Role } from "~/types/Role";
+import { Role } from "~/enums/Role";
+import { Session } from "~/types/Session";
 
 export type User = {
   id: number;
   email: string;
-  firstname: string;
-  lastname: string;
+  username?: string;
+  firstname?: string;
+  lastname?: string;
   avatar: string;
-  accessToken?: string;
+  magicLink?: string;
   role: Role;
-  createdAt: string;
-  updatedAt?: string;
+  createdAt: Date;
+  updatedAt?: Date;
+  sessions?: Session[];
 };
 
-export type formattedUser = {
+export type publicUser = {
   id: number;
-  firstname: string;
-  lastname: string;
   email: string;
-  role: string;
+  username?: string;
+  firstname?: string;
+  lastname?: string;
   avatar: string;
+  role: Role;
   createdAt: Date;
+  updatedAt?: Date;
 };

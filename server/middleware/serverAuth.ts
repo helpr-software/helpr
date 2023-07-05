@@ -1,5 +1,5 @@
 import { H3Event } from "h3";
-import { getUserByAccessToken } from "~/server/app/userService";
+import { getUserByAuthToken } from "~/server/app/userService";
 import { isString } from "@vueuse/core";
 
 export default eventHandler(async (event) => {
@@ -22,10 +22,10 @@ async function protectAuthRoute(event: H3Event): Promise<boolean> {
   if (event.path === undefined || !protectedRoutes.some((route) => event.path?.startsWith(route))) {
     return true;
   } else {
-    const accessToken = getCookie(event, "accessToken");
-    const hasAccessToken = isString(accessToken);
-    if (!hasAccessToken) return false;
-    const user = await getUserByAccessToken(accessToken);
+    const authToken = getCookie(event, "authToken");
+    const hasAuthToken = isString(authToken);
+    if (!hasAuthToken) return false;
+    const user = await getUserByAuthToken(authToken);
     if (!user) return false;
   }
   return true;

@@ -21,6 +21,13 @@ const disabled = computed(() => {
 
 const signup = async () => {
   loading.value = true;
+  await useSignup({
+    username: username.value,
+    firstname: firstname.value,
+    lastname: lastname.value,
+    email: email.value,
+    password: password.value,
+  });
   loading.value = false;
 };
 </script>

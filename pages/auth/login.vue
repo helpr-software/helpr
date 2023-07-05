@@ -1,27 +1,26 @@
 <script setup lang="ts">
-import LanguageSelector from "~/components/settings/LanguageSelector.vue";
-import { useUserStore } from "~/store/userStore";
-import { User } from "~/types/User";
 const { t } = useI18n();
+
+import { User } from "~/types/User";
 
 definePageMeta({
   name: "Login",
   title: "Login",
   description: "Login to your account",
-  middleware: "already-auth",
 });
 
 const user = computed(() => useUserStore().getUser);
-
-const login = ref("");
-const password = ref("");
-const loading = ref(false);
 
 watch(user, (user) => {
   if (user) {
     useRouter().push("/app/settings");
   }
 });
+
+const login = ref("");
+const password = ref("");
+
+const loading = ref(false);
 
 async function signin() {
   loading.value = true;
@@ -33,9 +32,9 @@ async function signin() {
     },
   });
   if (data.value) {
-    useSuccessToast(t("login.welcome_back") + " " + data.value.firstname + " " + data.value.lastname);
+    useSuccessToast(t("login.welcome_back") + " " + data.value.username);
     useUserStore().setUser(data.value);
-    await useRouter().push("/app/my-flows");
+    await useRouter().push("/app/settings");
   } else if (error.value?.statusMessage === "user_not_found") {
     useErrorToast(t("error.user_not_found"));
   } else if (error.value?.statusMessage === "invalid_password") {
@@ -86,7 +85,7 @@ async function signin() {
       <NuxtLink :to="{ name: 'Signup' }" class="btn-secondary w-full mt-6">{{ $t("login.dont_have_an_account") }}</NuxtLink>
     </div>
     <div class="sm:mx-auto sm:w-full sm:max-w-md flex flex-col justify-center items-center">
-      <LanguageSelector :is-text="true" class="mt-6" />
+      <SettingsLanguageSelector :is-text="true" class="mt-6" />
     </div>
   </div>
 </template>

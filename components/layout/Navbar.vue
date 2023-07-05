@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
-import { Bars3Icon } from "@heroicons/vue/24/outline";
+import { Bars3Icon, ArrowRightIcon } from "@heroicons/vue/24/outline";
 const { t } = useI18n();
 
 const navigation = getNavigation("home");
@@ -14,9 +14,9 @@ async function logout() {
   await useFetch("/api/auth/logout", {
     method: "POST",
   });
-  useSuccessToast(t("profile.logout") + " " + user.value?.firstname ?? "");
+  useSuccessToast(t("profile.logout") + " " + user.value?.username ?? "");
   userStore.logout();
-  await useRouter().push("/login");
+  await useRouter().push("/auth/login");
 }
 </script>
 
@@ -116,11 +116,14 @@ async function logout() {
       <Logo :isText="true" :size="6" />
       <div class="flex flex-1 justify-end items-center gap-x-4">
         <SettingsLanguageSelector />
-        <div v-if="!user" class="hidden lg:flex lg:gap-x-4">
-          <NuxtLink to="/auth/login" class="btn-primary py-1">{{ $t("navigation.login") }}</NuxtLink>
-          <NuxtLink to="/auth/signup" class="btn-secondary py-1">{{ $t("navigation.signup") }}</NuxtLink>
+        <div v-if="!user" class="hidden lg:flex lg:gap-x-4 items-center">
+          <NuxtLink to="/auth/login" class="text-gradient text-sm py-1">{{ $t("navigation.login") }}</NuxtLink>
+          <NuxtLink to="/auth/signup" class="btn-primary py-1">{{ $t("navigation.signup") }}</NuxtLink>
         </div>
-        <NuxtLink to="/app/settings" class="btn-secondary py-1 hidden md:block" v-else>{{ $t("navigation.open_app") }}</NuxtLink>
+        <NuxtLink to="/app/settings" class="btn-secondary py-1 hidden md:block" v-else-if="!$route.path.includes('app')">{{
+          $t("navigation.open_app")
+        }}</NuxtLink>
+        <ArrowRightIcon class="w-6 h-6 text-primary cursor-pointer" @click="logout()" v-if="user" />
       </div>
     </nav>
   </header>

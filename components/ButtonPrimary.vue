@@ -26,7 +26,8 @@ defineProps({
 <template>
   <div>
     <button class="btn-primary px-5 py-2" :disabled="disabled || pending" :class="{ 'w-full': fullWidth }">
-      <span>{{ text }}</span>
+      <Loader v-if="pending" />
+      <span v-else>{{ text }}</span>
     </button>
   </div>
 </template>

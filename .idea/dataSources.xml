@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Helpr Prod" uuid="d6d62727-fcd5-436a-b8d4-277c9c9a2af0">
+    <data-source source="LOCAL" name="helpr@aws.connect.psdb.cloud" uuid="c510f04e-b033-436d-bd63-ba4532786ca7">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>

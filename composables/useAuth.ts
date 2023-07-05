@@ -2,7 +2,7 @@ import { User } from "~~/types/User";
 import { useUserStore } from "~~/store/userStore";
 
 export async function useUser(): Promise<User | null> {
-  const authCookie = useCookie("accessToken").value;
+  const authCookie = useCookie("authToken").value;
   const user = useUserStore().getUser;
 
   if (authCookie && !user) {
