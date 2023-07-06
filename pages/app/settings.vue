@@ -11,7 +11,7 @@ definePageMeta({
 
 <template>
   <div class="flex flex-col gap-4">
-    <div class="bg-secondary px-4 py-5 sm:p-6 rounded-lg">
+    <div class="app-card">
       <h3 class="text-lg font-medium leading-6 text-primary">
         {{ $t("settings.title") }}
       </h3>
@@ -23,7 +23,7 @@ definePageMeta({
         <LanguageSelector :isText="true" />
       </div>
     </div>
-    <div class="bg-secondary px-4 py-5 sm:p-6 rounded-lg">
+    <div class="app-card">
       <h3 class="text-lg font-medium leading-6 text-primary">
         {{ $t("settings.theme") }}
       </h3>

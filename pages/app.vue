@@ -4,6 +4,7 @@ definePageMeta({
   name: "App",
   title: "App",
   description: "App",
+  layout: "app",
 });
 const resetError = (error: any) => {
   error.value = null;
@@ -12,11 +13,11 @@ const resetError = (error: any) => {
 </script>
 
 <template>
-  <div class="w-full">
+  <div class="w-full m-4">
     <NuxtErrorBoundary>
       <NuxtPage />
       <template #error="{ error }">
-        <div class="p-8 bg-secondary rounded-md">
+        <div class="p-8 rounded-md">
           <h2 class="text-4xl font-bold text-center">Error !</h2>
           <p class="text-center text-muted mt-4">{{ error }}</p>
           <div class="flex justify-center mt-4">

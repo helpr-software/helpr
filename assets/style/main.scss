@@ -6,10 +6,16 @@
 @import "themes/dark";
 
 @layer components {
+  .app-card {
+    @apply bg-app-secondary;
+    @apply rounded-md shadow-lg border-app-border border-[1px];
+    @apply px-4 py-5 sm:p-6;
+  }
+
   .input {
-    @apply bg-secondary;
+    @apply bg-app-secondary;
     @apply text-primary placeholder:text-placeholder;
-    @apply border-sm rounded-md border-primary hover:border-primary-hover;
+    @apply rounded-md border-app-border border-[1px] hover:border-primary-hover;
     @apply focus:outline-none focus:ring-2 focus:ring-accent;
     @apply px-4 py-2;
   }

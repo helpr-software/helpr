@@ -15,7 +15,7 @@ const resetError = (error) => {
     <NuxtErrorBoundary>
       <NuxtPage class="-m-4" />
       <template #error="{ error }">
-        <div class="p-8 bg-secondary rounded-md">
+        <div class="p-8 rounded-md">
           <h2 class="text-4xl font-bold">Error</h2>
           <p>{{ error }}</p>
           <button @click="resetError(error)" class="bg-blue-500 text-white p-2 rounded-md">Retry</button>

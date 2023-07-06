@@ -13,7 +13,7 @@ const user = computed(() => useUserStore().getUser);
 
 watch(user, (user) => {
   if (user) {
-    useRouter().push("/app/settings");
+    useRouter().push("/app/edit-profile");
   }
 });
 
@@ -35,7 +35,6 @@ async function signin() {
   if (data.value) {
     toastStore.showSuccessToast(t("login.welcome_back") + " " + data.value.username);
     useUserStore().setUser(data.value);
-    await useRouter().push("/app/settings");
   } else {
     toastStore.showErrorToast(t("error.unknown_error"));
   }

@@ -28,6 +28,11 @@ module.exports = {
         "accent-faded": "var(--accent-color-faded)",
         muted: "var(--font-muted)",
         placeholder: "var(--font-placeholder)",
+        "app-primary": "var(--app-primary)",
+        "app-secondary": "var(--app-secondary)",
+        "app-border": "var(--app-border)",
+        "app-text-primary": "var(--app-text-primary)",
+        "app-text-muted": "var(--app-text-muted)",
       },
       textColor: {
         primary: "var(--font-primary)",
