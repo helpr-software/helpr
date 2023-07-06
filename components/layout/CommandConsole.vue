@@ -18,7 +18,6 @@ const consoleActions = [
     shortcut: "⌘ + F",
     action: () => {
       locale.value = "fr";
-      globalStore.setLocale("fr");
     },
     icon: LanguageIcon,
   },
@@ -27,7 +26,6 @@ const consoleActions = [
     shortcut: "⌘ + E",
     action: () => {
       locale.value = "en";
-      globalStore.setLocale("en");
     },
     icon: LanguageIcon,
   },
