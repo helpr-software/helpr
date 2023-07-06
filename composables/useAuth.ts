@@ -18,3 +18,15 @@ export async function useUser(): Promise<User | null> {
   }
   return user;
 }
+
+export async function useLogout(): Promise<void> {
+  const userStore = useUserStore();
+  const toastStore = useToastStore();
+  await useFetch("/api/auth/logout", {
+    method: "POST",
+  });
+  // useSuccessToast(t("profile.logout") + " " + user.value?.username ?? "");
+  toastStore.showSuccessToast("Success", "You have been logged out");
+  userStore.logout();
+  await useRouter().push("/auth/login");
+}

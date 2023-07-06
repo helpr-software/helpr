@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import { Bars3Icon, ArrowRightIcon } from "@heroicons/vue/24/outline";
-const { t } = useI18n();
 
 const navigation = getNavigation("home");
 const userStore = useUserStore();
@@ -9,15 +8,6 @@ const userStore = useUserStore();
 const user = computed(() => {
   return userStore.getUser;
 });
-
-async function logout() {
-  await useFetch("/api/auth/logout", {
-    method: "POST",
-  });
-  useToastStore().showSuccessToast(t("profile.logout") + " " + user.value?.username ?? "");
-  userStore.logout();
-  await useRouter().push("/auth/login");
-}
 </script>
 
 <template>
@@ -102,7 +92,7 @@ async function logout() {
                 <MenuItem v-slot="{ active }">
                   <button
                     class="w-full block text-left px-4 py-2 text-sm text-primary"
-                    @click="logout()"
+                    @click="useLogout()"
                     :class="active ? 'bg-accent-faded text-accent' : 'text-red-600'"
                   >
                     {{ $t("navigation.logout") }}
@@ -123,7 +113,7 @@ async function logout() {
         <NuxtLink to="/app/settings" class="btn-secondary py-1 hidden md:block" v-else-if="!$route.path.includes('app')">{{
           $t("navigation.open_app")
         }}</NuxtLink>
-        <ArrowRightIcon class="w-6 h-6 text-primary cursor-pointer" @click="logout()" v-if="user" />
+        <ArrowRightIcon class="w-6 h-6 text-primary cursor-pointer" @click="useLogout()" v-if="user" />
       </div>
     </nav>
   </header>
