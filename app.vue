@@ -52,7 +52,7 @@ const toast = computed(() => {
 </script>
 
 <template>
-  <Html>
+  <Html :lang="$i18n.locale">
     <Body class="bg-primary m-0 p-0 text-primary">
       <LayoutEnvChecker />
       <ToastsBasic :show="toast.show" :title="toast.title" :description="toast.message" :type="toast.type" @close="toastStore.closeToast()" />

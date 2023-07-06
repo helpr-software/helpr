@@ -8,6 +8,7 @@ export type User = {
   lastname?: string;
   avatar: string;
   magicLink?: string;
+  isVerified: boolean;
   role: Role;
   createdAt: Date;
   updatedAt?: Date;
