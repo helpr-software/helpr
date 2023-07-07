@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const { t } = useI18n();
-
 definePageMeta({
   name: "Edit Profile",
   title: "Edit Profile",
@@ -9,19 +7,18 @@ definePageMeta({
 const userStore = useUserStore();
 
 const user = userStore.getUser;
+const confirmModal = ref(false);
 
 const updateProfile = async () => {
   await userStore.updateUser();
 };
 
-const deleteAccount = async () => {
-  if (confirm(t("profile.profile_delete_confirmation"))) {
-    await useFetch("/api/user/" + user?.id, {
-      method: "DELETE",
-    });
-    await useRouter().push("/");
-  }
-};
+async function deleteAccount() {
+  await useFetch("/api/user/" + user?.id, {
+    method: "DELETE",
+  });
+  await useRouter().push("/");
+}
 </script>
 
 <template>
@@ -53,12 +50,16 @@ const deleteAccount = async () => {
             </div>
           </div>
           <div class="col-span-6 sm:col-span-3">
-            <label for="first-name" class="block text-sm font-medium text-muted"> Profile Image </label>
-            <input :placeholder="$t('login.firstname')" class="input w-full" v-model="user.avatar" />
+            <label for="first-name" class="block text-sm font-medium text-muted">
+              {{ $t("profile.avatar") }}
+            </label>
+            <input :placeholder="$t('profile.firstname')" class="input w-full" v-model="user.avatar" />
           </div>
           <div class="col-span-6 sm:col-span-3">
-            <label for="cover" class="block text-sm font-medium text-muted"> Cover Image </label>
-            <input :placeholder="$t('login.firstname')" class="input w-full" v-model="user.cover" />
+            <label for="cover" class="block text-sm font-medium text-muted">
+              {{ $t("profile.cover") }}
+            </label>
+            <input :placeholder="$t('profile.firstname')" class="input w-full" v-model="user.cover" />
           </div>
           <div class="flex justify-end mt-5 gap-2">
             <button type="submit" class="btn-primary py-1">
@@ -85,13 +86,13 @@ const deleteAccount = async () => {
               <label for="first-name" class="block text-sm font-medium text-muted">
                 {{ $t("profile.firstname") }}
               </label>
-              <input :placeholder="$t('login.firstname')" class="input w-full" v-model="user.firstname" />
+              <input :placeholder="$t('profile.firstname')" class="input w-full" v-model="user.firstname" />
             </div>
             <div class="col-span-6 sm:col-span-3">
               <label for="last-name" class="block text-sm font-medium text-muted">
                 {{ $t("profile.lastname") }}
               </label>
-              <input :placeholder="$t('login.lastname')" class="input w-full" v-model="user.lastname" />
+              <input :placeholder="$t('profile.lastname')" class="input w-full" v-model="user.lastname" />
             </div>
           </div>
           <div class="flex justify-end mt-5 gap-2">
@@ -109,10 +110,17 @@ const deleteAccount = async () => {
         <p>{{ $t("profile.delete_my_account_description") }}</p>
       </div>
       <div class="mt-5">
-        <button type="button" class="bg-red-600 text-inverted px-4 py-2 rounded-md sm:text-sm" @click="deleteAccount">
+        <button type="button" class="bg-red-600 text-inverted px-4 py-2 rounded-md sm:text-sm" @click="confirmModal = true">
           {{ $t("profile.delete_my_account") }}
         </button>
       </div>
+      <ModalsConfirmDelete
+        :title="$t('profile.profile_delete_confirmation')"
+        :description="$t('profile.profile_delete_confirmation_description')"
+        :show="confirmModal"
+        @close="confirmModal = false"
+        :callback="deleteAccount"
+      />
     </div>
   </form>
 </template>

@@ -13,7 +13,7 @@ const resetError = (error: any) => {
 </script>
 
 <template>
-  <div class="md:pl-64 w-full m-4">
+  <div class="md:pl-64 w-full md:m-4">
     <NuxtErrorBoundary>
       <NuxtPage />
       <template #error="{ error }">

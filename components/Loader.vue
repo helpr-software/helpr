@@ -5,12 +5,16 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  size: {
+    type: String,
+    default: "h-6 w-6",
+  },
 });
 </script>
 
 <template>
   <div class="text-center">
-    <ArrowPathIcon class="animate-spin h-6 w-6 text-primary" />
+    <ArrowPathIcon class="animate-spin text-primary" :class="size" />
     <p class="text" v-if="props.isText">
       {{ $t("loading") }}
     </p>
