@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { User } from "~/types/User";
+
 definePageMeta({
   name: "Edit Profile",
   title: "Edit Profile",
@@ -6,7 +8,7 @@ definePageMeta({
 
 const userStore = useUserStore();
 
-const user = userStore.getUser;
+const user = userStore.getUser as User;
 const confirmModal = ref(false);
 
 const updateProfile = async () => {

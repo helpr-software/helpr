@@ -1,4 +1,4 @@
-import { CogIcon, HomeIcon, UserGroupIcon, UserCircleIcon, PencilIcon, BookmarkIcon, GlobeAltIcon } from "@heroicons/vue/24/outline";
+import { CogIcon, HomeIcon, UserGroupIcon, UserCircleIcon, PencilIcon, BookmarkIcon } from "@heroicons/vue/24/outline";
 
 type Where = "home" | "app" | "user" | "admin";
 
@@ -23,7 +23,6 @@ export function getNavigation(where: Where): Navigation[] {
       return [
         { name: "My Flows", to: "/app/my-flows", icon: BookmarkIcon },
         { name: "Providers", to: "/app/providers", icon: HomeIcon },
-        { name: "Community", to: "/app/community", icon: GlobeAltIcon },
       ];
     case "user":
       return [

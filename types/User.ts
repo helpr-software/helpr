@@ -9,6 +9,8 @@ export type User = {
   avatar: string;
   magicLink?: string;
   isVerified: boolean;
+  cover: string;
+  bio: string;
   role: Role;
   createdAt: Date;
   updatedAt?: Date;
