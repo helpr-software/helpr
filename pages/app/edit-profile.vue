@@ -32,7 +32,7 @@ async function deleteAccount() {
           </p>
         </div>
         <div class="mt-5 space-y-6 md:col-span-2 md:mt-0">
-          <div id="username" class="flex items-center space-x-2">
+          <div id="username" class="block text-sm font-medium text-muted">
             <label for="username" class="block text-sm font-medium text-muted">{{ $t("profile.username") }}</label>
             <input :placeholder="$t('login.login')" class="input w-full" v-model="user.username" />
           </div>
@@ -49,16 +49,22 @@ async function deleteAccount() {
               />
             </div>
           </div>
-          <div class="col-span-6 sm:col-span-3">
-            <label for="first-name" class="block text-sm font-medium text-muted">
-              {{ $t("profile.avatar") }}
-            </label>
-            <input :placeholder="$t('profile.firstname')" class="input w-full" v-model="user.avatar" />
+          <div class="col-span-6 sm:col-span-3 flex items-center">
+            <div class="rounded-full w-20 h-20">
+              <nuxt-img :src="user.avatar" class="rounded-full object-cover" />
+            </div>
+            <div class="w-full ml-5">
+              <label for="first-name" class="block text-sm font-medium text-muted">
+                {{ $t("profile.avatar") }}
+              </label>
+              <input :placeholder="$t('profile.firstname')" class="input w-full" v-model="user.avatar" />
+            </div>
           </div>
           <div class="col-span-6 sm:col-span-3">
-            <label for="cover" class="block text-sm font-medium text-muted">
+            <label for="first-name" class="block text-sm font-medium text-muted">
               {{ $t("profile.cover") }}
             </label>
+            <nuxt-img :src="user.cover" class="h-20 w-full object-cover my-2" quality="10" />
             <input :placeholder="$t('profile.firstname')" class="input w-full" v-model="user.cover" />
           </div>
           <div class="flex justify-end mt-5 gap-2">
